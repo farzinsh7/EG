@@ -1,0 +1,480 @@
+{% extends 'base/main_base.html' %}
+{% load static %}
+{% block content %}
+<header class="position-fixed w-100 top-0 py-md-4 z-2">
+    <nav class="header-container">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="logo-container">
+                    <a href="javascript:void(0)" class="backtotop">
+                        <img src="{% static "images/logo/logo.png" %}" alt="" width="100" class="logo">
+                    </a>
+                </div>
+
+                <div class="header-menu-container">
+                    <div class="close-phone-menu">
+                        <a href="javascript:void(0)" aria-label="Close Phone Menu" class="close-menu">
+                            <i class="fa fa-times fa-2xl"></i>
+                        </a>
+                    </div>
+
+                    <ul class="header-menu-items-container">
+                        <li class="header-menu-item d-inline-block px-4">
+                            <a href="javascript:void(0)" class="go-to-music phone-click-handler">
+                                Music
+                            </a>
+                        </li>
+
+                        <li class="header-menu-item d-inline-block px-4">
+                            <a href="javascript:void(0)" class="go-to-musicvideo phone-click-handler">
+                                Music Video
+                            </a>
+                        </li>
+
+                        <li class="header-menu-item d-inline-block px-4">
+                            <a href="javascript:void(0)" class="go-to-photogallery phone-click-handler">
+                                Photo Gallery
+                            </a>
+                        </li>
+
+                        <li class="header-menu-item d-inline-block px-4">
+                            <a href="javascript:void(0)" class="go-to-contact phone-click-handler">
+                                Contact
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="phone-menu-button-container d-md-none d-block">
+                        <a href="javascript:void(0)" aria-label="Phone Menu" class="open-menu">
+                            <i class="fa fa-list fa-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<section class="intro-container fullsize-background d-flex position-relative">
+    <div class="w-50 intro-left-container"></div>
+
+    <div class="w-50 intro-right-container d-flex align-items-center px-3">
+        <div class="welcome-container w-75">
+            <h1>Ehsan<br>Ghorbanzadeh</h1>
+
+            <p>Welcome to my website, here you will find my newly released music tracks and music videos in the highest quality, I wish you enjoy.</p>
+
+            <div class="social-links-container d-flex gap-4">
+                <span class="social-link-container">
+                    <a href="" class="social-link" target="_blank" aria-label="Soundcloud">
+                        <i class="fab fa-soundcloud fa-xl"></i>
+                    </a>
+                </span>
+
+                <span class="social-link-container">
+                    <a href="" class="social-link" target="_blank" aria-label="Spotify">
+                        <i class="fab fa-spotify fa-xl"></i>
+                    </a>
+                </span>
+
+                <span class="social-link-container">
+                    <a href="" class="social-link" target="_blank" aria-label="Youtube">
+                        <i class="fab fa-youtube fa-xl"></i>
+                    </a>
+                </span>
+
+                <span class="social-link-container">
+                    <a href="" class="social-link" target="_blank" aria-label="Instagram">
+                        <i class="fab fa-instagram fa-xl"></i>
+                    </a>
+                </span>
+
+                <span class="social-link-container">
+                    <a href="" class="social-link" target="_blank" aria-label="Twitter">
+                        <i class="fab fa-twitter fa-xl"></i>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <span class="bottom-faded-shadow position-absolute bottom-0 left-0 right-0 w-100 z-1"></span>
+
+    <span class="go-to-next-section-container position-absolute z-1"> <a href="javascript:void(0)"
+            class="go-to-next-section"></a> </span>
+
+    <span id="music" class="bottom-fake-space position-absolute bottom-0 left-0 right-0 w-100"></span>
+</section>
+
+<main>
+    <section class="music fullsize-background position-relative">
+        <div class="container py-md-5 py-4 position-relative z-1">
+            <div class="section-container position-relative">
+                <div class="section-header">
+                    <img src="{% static "images/main/music.png" %}" alt="">
+                </div>
+
+                <div class="musics-container">
+                    <ol>
+                        {% for song in music %}
+                        <li>
+                            <div class="music-container rounded-3 py-3 px-4 d-flex justify-content-between mb-1 position-relative">
+                                <div class="music-inner-container d-flex gap-4">
+                                    <div>
+                                        <img src="{{ song.image.url }}" alt="" width="80" class="rounded-3">
+                                    </div>
+
+                                    <div class="d-flex align-items-center">
+                                        <div class="music-date-container">
+                                            <strong class="d-block">13</strong>
+                                            <small>Dec 2021</small>
+                                        </div>
+                                        <div class="music-information-container">
+                                            <h6>{{ song.title }}</h6>
+                                            <small>{{ song.album }}</small>
+                                            <div class="phone-player-container">
+                                                <a href="javascript:void(0)" class="aWrap show-audio text-white"
+                                                    data-src="{{ song.audio_file }}">
+                                                    <button class="aPlay" disabled><span class="aPlayIco"><i
+                                                                class="fa fa-play"></i></span></button>
+                                                    <div class="custom-audio-controls">
+                                                        <div class="me-2">
+                                                            <span class="aNow"></span>
+                                                        </div>
+                                                        <div class="range">
+                                                            <span class="under-ranger"></span>
+                                                            <input class="aSeek" type="range" min="0" value="0"
+                                                                step="1" disabled><span class="change-range"></span>
+                                                        </div>
+                                                        <div class="aCron">
+                                                            <span class="aTime"></span>
+                                                        </div>
+                                                        <div class="volume-container">
+                                                            <span class="aVolIco"><i
+                                                                    class="fa fa-volume-up"></i></span>
+                                                            <div class="range-volume">
+                                                                <span class="under-ranger"></span>
+                                                                <input class="aVolume" type="range" min="0" max="1"
+                                                                    value="1" step="0.1" disabled><span
+                                                                    class="change-range"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="music-options-container d-flex gap-4 align-items-center me-3">
+                                    <div class="play-music-container position-relative">
+                                        <div class="aWrap show-audio text-white"
+                                            data-src="{{ song.audio_file }}"><button class="aPlay" disabled><span
+                                                    class="aPlayIco"><i class="fa fa-play"></i></span></button>
+                                            <span class="play-audio-text">
+                                                Play Track
+                                            </span>
+                                            <div class="custom-audio-controls">
+                                                <div class="range">
+                                                    <span class="under-ranger"></span>
+                                                    <input class="aSeek" type="range" min="0" value="0" step="1"
+                                                        disabled><span class="change-range"></span>
+                                                </div>
+                                                <div class="aCron">
+                                                    <span class="aNow"></span> / <span class="aTime"></span>
+                                                </div>
+                                                <div class="volume-container">
+                                                    <span class="aVolIco"><i class="fa fa-volume-up"></i></span>
+                                                    <div class="range-volume">
+                                                        <span class="under-ranger"></span>
+                                                        <input class="aVolume" type="range" min="0" max="1"
+                                                            value="1" step="0.1" disabled><span
+                                                            class="change-range"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="download-share-container d-flex gap-4">
+                                        <div class="download-music-container">
+                                            <a href="{{ song.audio_file.url }}" aria-label="Download Music" target="_blank">
+                                                <i class="fa fa-download fa-xl"></i>
+                                            </a>
+                                        </div>
+
+                                        <div class="share-music-container">
+                                            <a href="javascript:void(0)" class="open-share-nav"
+                                                aria-label="Share Music">
+                                                <i class="fa fa-share-alt fa-xl"></i>
+                                            </a>
+
+                                            <span
+                                                class="share-this-music-container position-absolute bg-black top-0 py-2 px-2 rounded-2 z-1">
+                                                <div class="social-links-container d-flex gap-1 flex-column-reverse align-items-center">
+                                                    <span class="social-link-container">
+                                                        <a href="" class="social-link" target="_blank"
+                                                            aria-label="Soundcloud">
+                                                            <i class="fab fa-soundcloud"></i>
+                                                        </a>
+                                                    </span>
+
+                                                    <span class="social-link-container">
+                                                        <a href="" class="social-link" target="_blank"
+                                                            aria-label="Spotify">
+                                                            <i class="fab fa-spotify"></i>
+                                                        </a>
+                                                    </span>
+
+                                                    <span class="social-link-container">
+                                                        <a href="" class="social-link" target="_blank"
+                                                            aria-label="Instagram">
+                                                            <i class="fab fa-instagram"></i>
+                                                        </a>
+                                                    </span>
+
+                                                    <span class="social-link-container">
+                                                        <a href="javascript:void(0)"
+                                                            class="social-link close-share-nav"
+                                                            aria-label="Close Share Nav">
+                                                            <i class="fa fa-times"></i>
+                                                        </a>
+                                                    </span>
+                                                </div>
+                                            </span>
+                                        </div>
+                                        <div class="music-phone-options-container">
+                                            <a href="javascript:void(0)" class="open-share-nav" aria-label="Open Music Options">
+                                                <i class="fa-solid fa-ellipsis fa-xl"></i>
+                                            </a>
+                                            <span
+                                            class="share-this-music-container position-absolute bg-black top-0 py-2 px-2 rounded-2 z-1">
+                                                <div class="social-links-container d-flex gap-1 flex-column-reverse align-items-center">
+                                                    <span class="social-link-container">
+                                                        <a href="" class="social-link" target="_blank"
+                                                            aria-label="Spotify">
+                                                            <i class="fab fa-spotify"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span class="social-link-container">
+                                                        <a href="" class="social-link" target="_blank"
+                                                            aria-label="Instagram">
+                                                            <i class="fab fa-instagram"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span class="social-link-container">
+                                                        <a href="" aria-label="Download Music" target="_blank">
+                                                            <i class="fa fa-download"></i>
+                                                        </a>
+                                                    </span>
+
+                                                    <span class="social-link-container">
+                                                        <a href="javascript:void(0)"
+                                                            class="social-link close-share-nav"
+                                                            aria-label="Close Share Nav">
+                                                            <i class="fa fa-times"></i>
+                                                        </a>
+                                                    </span>
+                                                </div>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <span id="musicvideo" class="bottom-fake-space position-absolute bottom-0 left-0 right-0 w-100"></span>
+    </section>
+
+    <section class="musicvideo fullsize-background position-relative">
+        <div class="container py-md-5 py-4 position-relative z-1">
+            <div class="section-container position-relative">
+                <div class="section-header">
+                    <img src="{% static "images/main/musicvideo.png" %}" alt="">
+                </div>
+
+                <div class="musicvideos-container d-flex gap-4 flex-md-row flex-column">
+                    <div class="video-container w-75 video-zoom-in-container">
+                        <video src="{% static "videos/video.mp4" %}" controls
+                            controlsList="nodownload noremoteplayback noplaybackrate"
+                            class="w-100 rounded-2"></video>
+                    </div>
+
+                    <div class="list-container w-25 overflow-auto">
+                        <ol class="gallery-list overflow-auto">
+                            <li class="gallery-list-item w-100 d-inline-block">
+                                <a href="javascript:void(0)" class="d-block mb-2">
+                                    <video src="{% static "videos/video.mp4" %}"
+                                        class="w-100 rounded-2 video-zoom-out"></video>
+                                </a>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <span id="photogallery" class="bottom-fake-space position-absolute bottom-0 left-0 right-0 w-100"></span>
+    </section>
+
+    <section class="photogallery fullsize-background position-relative">
+        <div class="container py-md-5 py-4 position-relative z-1">
+            <div class="section-container position-relative">
+                <div class="section-header">
+                    <img src="{% static "images/main/photoGallery.png" %}" alt="">
+                </div>
+
+                <div class="photogallery-container d-flex gap-4 flex-md-row flex-column">
+                    <div class="gallery-container w-75 image-zoom-in-container">
+                        <img src="{% static "images/main/gallery.jpg" %}" alt="" class="w-100 rounded-2">
+                    </div>
+
+                    <div class="list-container w-25 overflow-auto">
+                        <ol class="gallery-list overflow-auto">
+                            <li class="gallery-list-item w-100 d-inline-block">
+                                <a href="javascript:void(0)" class="d-block mb-2">
+                                    <img src="{% static "images/main/gallery.jpg" %}" alt=""
+                                        class="w-100 rounded-2 image-zoom-out">
+                                </a>
+                            </li>
+
+                            <li class="gallery-list-item w-100 d-inline-block">
+                                <a href="javascript:void(0)" class="d-block mb-2">
+                                    <img src="{% static "images/main/gallery1.jpg" %}" alt=""
+                                        class="w-100 rounded-2 image-zoom-out">
+                                </a>
+                            </li>
+                            <li class="gallery-list-item w-100 d-inline-block">
+                                <a href="javascript:void(0)" class="d-block mb-2">
+                                    <img src="{% static "images/main/gallery.jpg" %}" alt=""
+                                        class="w-100 rounded-2 image-zoom-out">
+                                </a>
+                            </li>
+                            <li class="gallery-list-item w-100 d-inline-block">
+                                <a href="javascript:void(0)" class="d-block mb-2">
+                                    <img src="{% static "images/main/gallery1.jpg" %}" alt=""
+                                        class="w-100 rounded-2 image-zoom-out">
+                                </a>
+                            </li>
+                            <li class="gallery-list-item w-100 d-inline-block">
+                                <a href="javascript:void(0)" class="d-block mb-2">
+                                    <img src="{% static "images/main/gallery.jpg" %}" alt=""
+                                        class="w-100 rounded-2 image-zoom-out">
+                                </a>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <span id="contact" class="bottom-fake-space position-absolute bottom-0 left-0 right-0 w-100"></span>
+    </section>
+</main>
+
+<footer class="contact fullsize-background">
+    <div class="container d-flex flex-column justify-content-end h-100 pb-5">
+        <div class="contact-container pt-5">
+            <div class="contact-header mb-4">
+                <p class="mb-0 text-white">Feel free to contact me.</p>
+                <p class="text-white">I'll be glad to hear from you, buddy.</p>
+            </div>
+
+            <div class="contact-form-container">
+                <form action="" method="post">
+                    <div class="mb-4">
+                        <input class="form-control" type="text" placeholder="Name" aria-label="Name">
+                        <div class="invalid-feedback">
+                            Please enter a message in the textarea.
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <input class="form-control" type="email" placeholder="Email" aria-label="Email">
+                        <div class="invalid-feedback">
+                            Please enter a message in the textarea.
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <input class="form-control" type="text" placeholder="Subject" aria-label="Subject">
+                        <div class="invalid-feedback">
+                            Please enter a message in the textarea.
+                        </div>
+                    </div>
+
+                    <div class="mb-md-5 mb-4">
+                        <textarea class="form-control" type="text" placeholder="Enter your message here..."
+                            aria-label="Message"></textarea>
+                        <div class="invalid-feedback">
+                            Please enter a message in the textarea.
+                        </div>
+                    </div>
+
+                    <div>
+                        <input type="submit" value="Submit Now" class="btn btn-primary rounded-3">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <span class="footer-hr d-block w-100"></span>
+
+            <nav class="d-flex align-items-center flex-lg-row flex-column">
+                <div class="footer-logo-container d-flex justify-content-lg-start justify-content-center">
+                    <a href="javascript:void(0)" class="backtotop">
+                        <img src="{% static "images/logo/egLogo.png" %}" alt="" width="100" class="logo">
+                    </a>
+                </div>
+
+                <div class="footer-copyright-container d-flex justify-content-center">
+                    <p class="mb-0">
+                        <small>
+                            &copy;2023 Allrights reserved for Music.com
+                        </small>
+                    </p>
+                </div>
+
+                <div class="footer-social-links-container d-flex justify-content-lg-end justify-content-center">
+                    <div class="social-links-container d-flex gap-4">
+                        <span class="social-link-container">
+                            <a href="" class="social-link" target="_blank" aria-label="Soundcloud">
+                                <i class="fab fa-soundcloud fa-xl"></i>
+                            </a>
+                        </span>
+
+                        <span class="social-link-container">
+                            <a href="" class="social-link" target="_blank" aria-label="Spotify">
+                                <i class="fab fa-spotify fa-xl"></i>
+                            </a>
+                        </span>
+
+                        <span class="social-link-container">
+                            <a href="" class="social-link" target="_blank" aria-label="Youtube">
+                                <i class="fab fa-youtube fa-xl"></i>
+                            </a>
+                        </span>
+
+                        <span class="social-link-container">
+                            <a href="" class="social-link" target="_blank" aria-label="Instagram">
+                                <i class="fab fa-instagram fa-xl"></i>
+                            </a>
+                        </span>
+
+                        <span class="social-link-container">
+                            <a href="" class="social-link" target="_blank" aria-label="Twitter">
+                                <i class="fab fa-twitter fa-xl"></i>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</footer>
+{% endblock content %}
