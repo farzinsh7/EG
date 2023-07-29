@@ -134,7 +134,7 @@
                                             <small>{{ song.album }}</small>
                                             <div class="phone-player-container">
                                                 <a href="javascript:void(0)" class="aWrap show-audio text-white"
-                                                    data-src="{{ song.audio_file }}">
+                                                    data-src="{{ song.audio_file.url }}">
                                                     <button class="aPlay" disabled><span class="aPlayIco"><i
                                                                 class="fa fa-play"></i></span></button>
                                                     <div class="custom-audio-controls">
@@ -169,7 +169,7 @@
                                 <div class="music-options-container d-flex gap-4 align-items-center me-3">
                                     <div class="play-music-container position-relative">
                                         <div class="aWrap show-audio text-white"
-                                            data-src="{{ song.audio_file }}"><button class="aPlay" disabled><span
+                                            data-src="{{ song.audio_file.url }}"><button class="aPlay" disabled><span
                                                     class="aPlayIco"><i class="fa fa-play"></i></span></button>
                                             <span class="play-audio-text">
                                                 Play Track
