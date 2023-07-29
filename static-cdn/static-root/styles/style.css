@@ -18,7 +18,6 @@ html {
 
 a {
     text-decoration: none;
-    color: #7f7f7f !important;
 }
 
 ul,
@@ -61,11 +60,11 @@ strong {
 }
 
 .social-link {
-    color: black;
+    color: #676767;
+    transition: 0.2s ease-in-out;
 }
-
-.footer-social-links-container .social-link {
-    color: #191919;
+.social-link:hover {
+    color: #c0c0c0;
 }
 
 .share-this-music-container .social-link {
@@ -591,8 +590,20 @@ input.aVolume {
     align-items: center;
 }
 
-@media (min-width: 768px) {
 
+@media (max-height: 820px) {
+    .welcome-container {
+        margin-top: 3rem !important;
+    }
+}
+
+@media (max-height: 560px) {
+    .go-to-next-section-container {
+        bottom: 2rem;
+    }
+}
+
+@media (max-width: 1199px) {
     .musics-container::-webkit-scrollbar,
     .photogallery-container .list-container::-webkit-scrollbar {
         width: 28px;
@@ -613,21 +624,7 @@ input.aVolume {
         border-radius: 9999px;
         background-color: gray;
     }
-}
 
-@media (max-height: 820px) {
-    .welcome-container {
-        margin-top: 3rem !important;
-    }
-}
-
-@media (max-height: 560px) {
-    .go-to-next-section-container {
-        bottom: 2rem;
-    }
-}
-
-@media (max-width: 1199px) {
 
     .music-date-container,
     .music-information-container small,
@@ -655,9 +652,9 @@ input.aVolume {
         display: block !important;
     }
 
-    .music-phone-options-container a {
+    /* .music-phone-options-container a {
         color: black;
-    }
+    } */
 
     .play-music-container {
         display: none !important;
@@ -703,6 +700,12 @@ input.aVolume {
 
     .phone-player-container .aWrap input[type=range]::-moz-range-thumb {
         background: #000;
+    }
+    .download-share-container a{
+        color: #dedede ;
+    }
+    .open-share-nav{
+        color: #000 !important;
     }
 }
 
