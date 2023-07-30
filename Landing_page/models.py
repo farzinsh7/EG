@@ -52,3 +52,21 @@ class Gallery(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class VideoPlayer(models.Model):
+    STATUS_CHOICES = (
+        ('d', 'Draft'),
+        ('p', 'Publish')
+    )
+    title= models.CharField(max_length=150)
+    album= models.CharField(max_length=150)
+    image= models.ImageField(upload_to='video-cover', null=True)
+    video_file = models.FileField(blank=True,null=True)
+    publish = models.DateTimeField(default=timezone.now)
+    status = models.CharField(max_length=1, choices=STATUS_CHOICES)
+
+    def __str__(self):
+        return self.title
+
+    objects = ProjectManager()

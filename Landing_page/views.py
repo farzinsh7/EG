@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import MainData, MusicPlayer, Gallery
+from .models import MainData, MusicPlayer, Gallery, VideoPlayer
 from django.views.generic import CreateView, ListView
 
 # Create your views here.
@@ -15,5 +15,6 @@ class HomeInformation(ListView):
         context = super().get_context_data(**kwargs)
         context['info'] = MainData.objects.first()
         context['music'] = MusicPlayer.objects.published().order_by("-publish")
+        context['video'] = VideoPlayer.objects.published().order_by("-publish")
         context['gallery'] = Gallery.objects.all()
         return context

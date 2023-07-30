@@ -1,5 +1,6 @@
 {% extends 'base/main_base.html' %}
 {% load static %}
+{% load custom_filters %}
 {% block content %}
 <header class="position-fixed w-100 top-0 py-md-4 z-2">
     <nav class="header-container">
@@ -276,30 +277,29 @@
 
                 <div class="musicvideos-container d-flex gap-4 flex-md-row flex-column">
                     <div class="video-container w-75 video-zoom-in-container">
-                        <video  src="{% static "videos/video.mp4" %}" controls
-                            controlsList="nodownload noremoteplayback noplaybackrate"
-                            class="w-100 rounded-2"></video>
+                        <video  src="{{ video.all|get_first_url }}" controls
+                        controlsList="nodownload noremoteplayback noplaybackrate"
+                        class="w-100 rounded-2"></video>
                         
                     </div>
-
                     <div class="list-container w-25 overflow-auto">
                         <ol class="gallery-list overflow-auto">
+                            {% for clip in video %}
                             <li class="gallery-list-item w-100 d-inline-block">
                                 <a href="javascript:void(0)" class="d-block mb-2">
-                                    <video width="318px" height="189px" poster="{% static "images/main/gallery.jpg" %}" src="{% static "videos/video.mp4" %}"
+                                    <video width="318px" height="189px" poster="{{ clip.image.url }}" src="{{ clip.video_file.url }}"
                                         class="w-100 rounded-2 video-zoom-out">
                                     </video>
                                 </a>
                             </li>
+                            {% endfor %}
                         </ol>
                     </div>
                 </div>
             </div>
         </div>
-
         <span id="photogallery" class="bottom-fake-space position-absolute bottom-0 left-0 right-0 w-100"></span>
     </section>
-
     <section class="photogallery fullsize-background position-relative">
         <div class="container py-md-5 py-4 position-relative z-1">
             <div class="section-container position-relative">

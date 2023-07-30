@@ -40,8 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'account.apps.AccountConfig',
     'django_render_partial',
-    'Landing_page.apps.LandingPageConfig',
+    'Landing_page',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
