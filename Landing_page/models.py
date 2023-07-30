@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 # Create your models here.
@@ -36,7 +37,7 @@ class MusicPlayer(models.Model):
     album= models.CharField(max_length=150)
     image= models.ImageField(upload_to='cover', null=True)
     audio_file = models.FileField(blank=True,null=True)
-    audio_link = models.CharField(max_length=200,blank=True,null=True)
+    publish = models.DateTimeField(default=timezone.now)
     status = models.CharField(max_length=1, choices=STATUS_CHOICES)
 
     def __str__(self):

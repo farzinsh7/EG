@@ -14,6 +14,6 @@ class HomeInformation(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['info'] = MainData.objects.first()
-        context['music'] = MusicPlayer.objects.all()
+        context['music'] = MusicPlayer.objects.published().order_by("-publish")
         context['gallery'] = Gallery.objects.all()
         return context
