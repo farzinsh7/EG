@@ -591,6 +591,31 @@ input.aVolume {
 }
 
 
+
+@media (min-width: 768px) {
+
+    .musics-container::-webkit-scrollbar,
+    .photogallery-container .list-container::-webkit-scrollbar {
+        width: 28px;
+    }
+
+    .musics-container::-webkit-scrollbar-track,
+    .photogallery-container .list-container::-webkit-scrollbar-track {
+        border: 6px solid rgba(0, 0, 0, 0);
+        background-clip: padding-box;
+        border-radius: 9999px;
+        background-color: #dadee1;
+    }
+
+    .musics-container::-webkit-scrollbar-thumb,
+    .photogallery-container .list-container::-webkit-scrollbar-thumb {
+        border: 10px solid rgba(0, 0, 0, 0);
+        background-clip: padding-box;
+        border-radius: 9999px;
+        background-color: gray;
+    }
+}
+
 @media (max-height: 820px) {
     .welcome-container {
         margin-top: 3rem !important;

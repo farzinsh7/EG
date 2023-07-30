@@ -7,36 +7,35 @@
             <div class="d-flex justify-content-between align-items-center">
                 <div class="logo-container">
                     <a href="javascript:void(0)" class="backtotop">
-                        <img src="{% static "images/logo/logo.png" %}" alt="" width="100" class="logo">
+                        <img src="{{ info.header_logo.url }}" alt="" width="100" class="logo">
                     </a>
                 </div>
-
                 <div class="header-menu-container">
                     <div class="close-phone-menu">
                         <a href="javascript:void(0)" aria-label="Close Phone Menu" class="close-menu">
                             <i class="fa fa-times fa-2xl"></i>
                         </a>
                     </div>
-
+                    
                     <ul class="header-menu-items-container">
                         <li class="header-menu-item d-inline-block px-4">
                             <a href="javascript:void(0)" class="go-to-music phone-click-handler">
                                 Music
                             </a>
                         </li>
-
+                        
                         <li class="header-menu-item d-inline-block px-4">
                             <a href="javascript:void(0)" class="go-to-musicvideo phone-click-handler">
                                 Music Video
                             </a>
                         </li>
-
+                        
                         <li class="header-menu-item d-inline-block px-4">
                             <a href="javascript:void(0)" class="go-to-photogallery phone-click-handler">
                                 Photo Gallery
                             </a>
                         </li>
-
+                        
                         <li class="header-menu-item d-inline-block px-4">
                             <a href="javascript:void(0)" class="go-to-contact phone-click-handler">
                                 Contact
@@ -57,43 +56,21 @@
 
 <section class="intro-container fullsize-background d-flex position-relative">
     <div class="w-50 intro-left-container"></div>
-
+    
     <div class="w-50 intro-right-container d-flex align-items-center px-3">
         <div class="welcome-container w-75">
-            <h1>Ehsan<br>Ghorbanzadeh</h1>
+            <img src="{% static "images/main/Ehsan Ghorbanzadeh.svg" %}" alt="">
 
-            <p>Welcome to my website, here you will find my newly released music tracks and music videos in the highest quality, I wish you enjoy.</p>
+            <p>{{ info.description }}</p>
 
             <div class="social-links-container d-flex gap-4">
+                {% for social in info.socials.all %}
                 <span class="social-link-container">
-                    <a href="" class="social-link" target="_blank" aria-label="Soundcloud">
-                        <i class="fab fa-soundcloud fa-xl"></i>
+                    <a href="{{ social.link }}" class="social-link" target="_blank" aria-label="{{ social.label }}">
+                        <i class="{{ social.icon }} fa-xl"></i>
                     </a>
                 </span>
-
-                <span class="social-link-container">
-                    <a href="" class="social-link" target="_blank" aria-label="Spotify">
-                        <i class="fab fa-spotify fa-xl"></i>
-                    </a>
-                </span>
-
-                <span class="social-link-container">
-                    <a href="" class="social-link" target="_blank" aria-label="Youtube">
-                        <i class="fab fa-youtube fa-xl"></i>
-                    </a>
-                </span>
-
-                <span class="social-link-container">
-                    <a href="" class="social-link" target="_blank" aria-label="Instagram">
-                        <i class="fab fa-instagram fa-xl"></i>
-                    </a>
-                </span>
-
-                <span class="social-link-container">
-                    <a href="" class="social-link" target="_blank" aria-label="Twitter">
-                        <i class="fab fa-twitter fa-xl"></i>
-                    </a>
-                </span>
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -299,17 +276,19 @@
 
                 <div class="musicvideos-container d-flex gap-4 flex-md-row flex-column">
                     <div class="video-container w-75 video-zoom-in-container">
-                        <video src="{% static "videos/video.mp4" %}" controls
+                        <video  src="{% static "videos/video.mp4" %}" controls
                             controlsList="nodownload noremoteplayback noplaybackrate"
                             class="w-100 rounded-2"></video>
+                        
                     </div>
 
                     <div class="list-container w-25 overflow-auto">
                         <ol class="gallery-list overflow-auto">
                             <li class="gallery-list-item w-100 d-inline-block">
                                 <a href="javascript:void(0)" class="d-block mb-2">
-                                    <video src="{% static "videos/video.mp4" %}"
-                                        class="w-100 rounded-2 video-zoom-out"></video>
+                                    <video width="318px" height="189px" poster="{% static "images/main/gallery.jpg" %}" src="{% static "videos/video.mp4" %}"
+                                        class="w-100 rounded-2 video-zoom-out">
+                                    </video>
                                 </a>
                             </li>
                         </ol>
@@ -428,7 +407,7 @@
             <nav class="d-flex align-items-center flex-lg-row flex-column">
                 <div class="footer-logo-container d-flex justify-content-lg-start justify-content-center">
                     <a href="javascript:void(0)" class="backtotop">
-                        <img src="{% static "images/logo/egLogo.png" %}" alt="" width="100" class="logo">
+                        <img src="{{ info.footer_logo.url }}" alt="" width="100" class="logo">
                     </a>
                 </div>
 
@@ -442,35 +421,13 @@
 
                 <div class="footer-social-links-container d-flex justify-content-lg-end justify-content-center">
                     <div class="social-links-container d-flex gap-4">
-                        <span class="social-link-container">
-                            <a href="" class="social-link" target="_blank" aria-label="Soundcloud">
-                                <i class="fab fa-soundcloud fa-xl"></i>
-                            </a>
-                        </span>
-
-                        <span class="social-link-container">
-                            <a href="" class="social-link" target="_blank" aria-label="Spotify">
-                                <i class="fab fa-spotify fa-xl"></i>
-                            </a>
-                        </span>
-
-                        <span class="social-link-container">
-                            <a href="" class="social-link" target="_blank" aria-label="Youtube">
-                                <i class="fab fa-youtube fa-xl"></i>
-                            </a>
-                        </span>
-
-                        <span class="social-link-container">
-                            <a href="" class="social-link" target="_blank" aria-label="Instagram">
-                                <i class="fab fa-instagram fa-xl"></i>
-                            </a>
-                        </span>
-
-                        <span class="social-link-container">
-                            <a href="" class="social-link" target="_blank" aria-label="Twitter">
-                                <i class="fab fa-twitter fa-xl"></i>
-                            </a>
-                        </span>
+                        {% for social in info.socials.all %}
+                            <span class="social-link-container">
+                                <a href="{{ social.link }}" class="social-link" target="_blank" aria-label="{{ social.label }}">
+                                    <i class="{{ social.icon }} fa-xl"></i>
+                                </a>
+                            </span>
+                        {% endfor %}
                     </div>
                 </div>
             </nav>

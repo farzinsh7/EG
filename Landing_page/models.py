@@ -20,6 +20,7 @@ class MainData(models.Model):
 class SocialLinks(models.Model):
     label = models.CharField(max_length=120)
     icon = models.CharField(max_length=200)
+    link = models.CharField(max_length=200,blank=True,null=True)
     main_data = models.ForeignKey(MainData, null=True, on_delete=models.SET_NULL, related_name='socials')
 
     def __str__(self):
