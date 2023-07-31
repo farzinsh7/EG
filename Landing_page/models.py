@@ -70,3 +70,15 @@ class VideoPlayer(models.Model):
         return self.title
 
     objects = ProjectManager()
+
+
+
+class ContactForm(models.Model):
+    name = models.CharField(max_length=150)
+    email = models.EmailField()
+    subject = models.CharField(max_length=150)
+    message = models.TextField()
+
+
+    def __str__(self):
+        return self.subject

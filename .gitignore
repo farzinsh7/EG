@@ -3,7 +3,7 @@
 
 ### Django ###
 media
-media-root/
+
 
 ### Django ###
 *.log
@@ -32,6 +32,7 @@ media
 .Python
 build/
 develop-eggs/
+static-cdn/
 dist/
 downloads/
 eggs/

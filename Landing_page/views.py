@@ -1,15 +1,18 @@
 from django.shortcuts import render
-from .models import MainData, MusicPlayer, Gallery, VideoPlayer
-from django.views.generic import CreateView, ListView
+from django.urls import reverse_lazy
+from .models import MainData, MusicPlayer, Gallery, VideoPlayer, ContactForm
+from .forms import ContactFormClass
+from django.views.generic import CreateView
 
 # Create your views here.
 
 
-class HomeInformation(ListView):
-    model = MainData
-    # form_class = ContactFormClass
-    # success_url = reverse_lazy('homepage:information')
+class HomeInformation(CreateView):
+    model = ContactForm
+    form_class = ContactFormClass
+    success_url = reverse_lazy('homepage:information')
     template_name = 'index.html'
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -18,3 +21,5 @@ class HomeInformation(ListView):
         context['video'] = VideoPlayer.objects.published().order_by("-publish")
         context['gallery'] = Gallery.objects.all()
         return context
+
+

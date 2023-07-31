@@ -17,33 +17,28 @@
                             <i class="fa fa-times fa-2xl"></i>
                         </a>
                     </div>
-                    
                     <ul class="header-menu-items-container">
                         <li class="header-menu-item d-inline-block px-4">
                             <a href="javascript:void(0)" class="go-to-music phone-click-handler">
                                 Music
                             </a>
                         </li>
-                        
                         <li class="header-menu-item d-inline-block px-4">
                             <a href="javascript:void(0)" class="go-to-musicvideo phone-click-handler">
                                 Music Video
                             </a>
                         </li>
-                        
                         <li class="header-menu-item d-inline-block px-4">
                             <a href="javascript:void(0)" class="go-to-photogallery phone-click-handler">
                                 Photo Gallery
                             </a>
                         </li>
-                        
                         <li class="header-menu-item d-inline-block px-4">
                             <a href="javascript:void(0)" class="go-to-contact phone-click-handler">
                                 Contact
                             </a>
                         </li>
                     </ul>
-
                     <div class="phone-menu-button-container d-md-none d-block">
                         <a href="javascript:void(0)" aria-label="Phone Menu" class="open-menu">
                             <i class="fa fa-list fa-xl"></i>
@@ -54,16 +49,12 @@
         </div>
     </nav>
 </header>
-
 <section class="intro-container fullsize-background d-flex position-relative">
     <div class="w-50 intro-left-container"></div>
-    
     <div class="w-50 intro-right-container d-flex align-items-center px-3">
         <div class="welcome-container w-75">
             <img src="{% static "images/main/Ehsan Ghorbanzadeh.svg" %}" alt="">
-
             <p>{{ info.description }}</p>
-
             <div class="social-links-container d-flex gap-4">
                 {% for social in info.socials.all %}
                 <span class="social-link-container">
@@ -75,15 +66,11 @@
             </div>
         </div>
     </div>
-
     <span class="bottom-faded-shadow position-absolute bottom-0 left-0 right-0 w-100 z-1"></span>
-
     <span class="go-to-next-section-container position-absolute z-1"> <a href="javascript:void(0)"
-            class="go-to-next-section"></a> </span>
-
+            class="go-to-next-section"></a></span>
     <span id="music" class="bottom-fake-space position-absolute bottom-0 left-0 right-0 w-100"></span>
 </section>
-
 <main>
     <section class="music fullsize-background position-relative">
         <div class="container py-md-5 py-4 position-relative z-1">
@@ -91,7 +78,6 @@
                 <div class="section-header">
                     <img src="{% static "images/main/music.png" %}" alt="">
                 </div>
-
                 <div class="musics-container">
                     <ol>
                         {% for song in music %}
@@ -101,7 +87,6 @@
                                     <div>
                                         <img src="{{ song.image.url }}" alt="" width="80" class="rounded-3">
                                     </div>
-
                                     <div class="d-flex align-items-center">
                                         <div class="music-date-container">
                                             <strong class="d-block">13</strong>
@@ -143,7 +128,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="music-options-container d-flex gap-4 align-items-center me-3">
                                     <div class="play-music-container position-relative">
                                         <div class="aWrap show-audio text-white"
@@ -179,13 +163,11 @@
                                                 <i class="fas fa-download fa-xl"></i>
                                             </a>
                                         </div>
-
                                         <div class="share-music-container">
                                             <a href="javascript:void(0)" class="open-share-nav "
                                                 aria-label="Share Music">
                                                 <i class="fa-solid fa-share-nodes fa-xl"></i>
                                             </a>
-
                                             <span
                                                 class="share-this-music-container position-absolute bg-black top-0 py-2 px-2 rounded-2 z-1">
                                                 <div class="social-links-container d-flex gap-1 flex-column-reverse align-items-center">
@@ -195,21 +177,18 @@
                                                             <i class="fab fa-soundcloud"></i>
                                                         </a>
                                                     </span>
-
                                                     <span class="social-link-container">
                                                         <a href="" class="social-link" target="_blank"
                                                             aria-label="Spotify">
                                                             <i class="fab fa-spotify"></i>
                                                         </a>
                                                     </span>
-
                                                     <span class="social-link-container">
                                                         <a href="" class="social-link" target="_blank"
                                                             aria-label="Instagram">
                                                             <i class="fab fa-instagram"></i>
                                                         </a>
                                                     </span>
-
                                                     <span class="social-link-container">
                                                         <a href="javascript:void(0)"
                                                             class="social-link close-share-nav"
@@ -244,7 +223,6 @@
                                                             <i class="fa fa-download"></i>
                                                         </a>
                                                     </span>
-
                                                     <span class="social-link-container">
                                                         <a href="javascript:void(0)"
                                                             class="social-link close-share-nav"
@@ -264,23 +242,19 @@
                 </div>
             </div>
         </div>
-
         <span id="musicvideo" class="bottom-fake-space position-absolute bottom-0 left-0 right-0 w-100"></span>
     </section>
-
     <section class="musicvideo fullsize-background position-relative">
         <div class="container py-md-5 py-4 position-relative z-1">
             <div class="section-container position-relative">
                 <div class="section-header">
                     <img src="{% static "images/main/musicvideo.png" %}" alt="">
                 </div>
-
                 <div class="musicvideos-container d-flex gap-4 flex-md-row flex-column">
                     <div class="video-container w-75 video-zoom-in-container">
                         <video  src="{{ video.all|get_first_url }}" controls
                         controlsList="nodownload noremoteplayback noplaybackrate"
                         class="w-100 rounded-2"></video>
-                        
                     </div>
                     <div class="list-container w-25 overflow-auto">
                         <ol class="gallery-list overflow-auto">
@@ -354,7 +328,6 @@
         <span id="contact" class="bottom-fake-space position-absolute bottom-0 left-0 right-0 w-100"></span>
     </section>
 </main>
-
 <footer class="contact fullsize-background">
     <div class="container d-flex flex-column justify-content-end h-100 pb-5">
         <div class="contact-container pt-5">
@@ -362,55 +335,35 @@
                 <p class="mb-0 text-white">Feel free to contact me.</p>
                 <p class="text-white">I'll be glad to hear from you, buddy.</p>
             </div>
-
             <div class="contact-form-container">
-                <form action="" method="post">
+                <form method="post">
+                    {% csrf_token %}
                     <div class="mb-4">
-                        <input class="form-control" type="text" placeholder="Name" aria-label="Name">
-                        <div class="invalid-feedback">
-                            Please enter a message in the textarea.
-                        </div>
+                        {{ form.name }}
                     </div>
-
                     <div class="mb-4">
-                        <input class="form-control" type="email" placeholder="Email" aria-label="Email">
-                        <div class="invalid-feedback">
-                            Please enter a message in the textarea.
-                        </div>
+                        {{ form.email }}
                     </div>
-
                     <div class="mb-4">
-                        <input class="form-control" type="text" placeholder="Subject" aria-label="Subject">
-                        <div class="invalid-feedback">
-                            Please enter a message in the textarea.
-                        </div>
+                        {{ form.subject }}
                     </div>
-
                     <div class="mb-md-5 mb-4">
-                        <textarea class="form-control" type="text" placeholder="Enter your message here..."
-                            aria-label="Message"></textarea>
-                        <div class="invalid-feedback">
-                            Please enter a message in the textarea.
-                        </div>
+                        {{ form.message }}
                     </div>
-
                     <div>
-                        <input type="submit" value="Submit Now" class="btn btn-primary rounded-3">
+                        <button type="submit" class="btn btn-primary rounded-3">Submit Now</button>
                     </div>
                 </form>
             </div>
         </div>
-
         <div>
             <span class="footer-hr d-block w-100"></span>
-
             <nav class="d-flex align-items-center flex-lg-row flex-column">
                 <div class="footer-logo-container d-flex justify-content-lg-start justify-content-center">
                     <a href="javascript:void(0)" class="backtotop">
                         <img src="{{ info.footer_logo.url }}" alt="" width="100" class="logo">
                     </a>
                 </div>
-
                 <div class="footer-copyright-container d-flex justify-content-center">
                     <p class="mb-0">
                         <small>
@@ -418,7 +371,6 @@
                         </small>
                     </p>
                 </div>
-
                 <div class="footer-social-links-container d-flex justify-content-lg-end justify-content-center">
                     <div class="social-links-container d-flex gap-4">
                         {% for social in info.socials.all %}
