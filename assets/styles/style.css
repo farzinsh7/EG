@@ -132,6 +132,10 @@ strong {
     color: #a27f3b;
 }
 
+.z-200{
+    z-index: 200 !important;
+}
+
 .intro-container {
     height: 100vh;
     background-image: url(../images/main/ehsanNewPhoto.jpg);

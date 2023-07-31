@@ -3,5 +3,6 @@ Django==4.2.3
 django-render-partial==0.4
 mysqlclient==2.2.0
 Pillow==10.0.0
+sorl-thumbnail==12.9.0
 sqlparse==0.4.4
 tzdata==2023.3

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'account.apps.AccountConfig',
     'django_render_partial',
+    'sorl.thumbnail',
     'Landing_page',
 ]
 
