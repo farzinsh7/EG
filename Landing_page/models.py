@@ -38,6 +38,7 @@ class MusicPlayer(models.Model):
     image= models.ImageField(upload_to='cover', null=True)
     audio_file = models.FileField(blank=True,null=True)
     publish = models.DateTimeField(default=timezone.now)
+    created = models.DateTimeField(auto_now_add=True, null=True)
     status = models.CharField(max_length=1, choices=STATUS_CHOICES)
 
     def __str__(self):
@@ -48,7 +49,8 @@ class MusicPlayer(models.Model):
 
 class Gallery(models.Model):
     title = models.CharField(max_length=150)
-    main_img = models.ImageField(upload_to="gallery")
+    data_file = models.ImageField(upload_to="gallery")
+    created = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
         return self.title
@@ -62,8 +64,9 @@ class VideoPlayer(models.Model):
     title= models.CharField(max_length=150)
     album= models.CharField(max_length=150)
     image= models.ImageField(upload_to='video-cover', null=True)
-    video_file = models.FileField(blank=True,null=True)
+    data_file = models.FileField(blank=True,null=True)
     publish = models.DateTimeField(default=timezone.now)
+    created = models.DateTimeField(auto_now_add=True, null=True)
     status = models.CharField(max_length=1, choices=STATUS_CHOICES)
 
     def __str__(self):
@@ -78,6 +81,7 @@ class ContactForm(models.Model):
     email = models.EmailField()
     subject = models.CharField(max_length=150)
     message = models.TextField()
+    created = models.DateTimeField(auto_now_add=True, null=True)
 
 
     def __str__(self):

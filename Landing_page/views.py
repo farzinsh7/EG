@@ -19,7 +19,7 @@ class HomeInformation(CreateView):
         context['info'] = MainData.objects.first()
         context['music'] = MusicPlayer.objects.published().order_by("-publish")
         context['video'] = VideoPlayer.objects.published().order_by("-publish")
-        context['gallery'] = Gallery.objects.all()
+        context['gallery'] = Gallery.objects.all().order_by("-created")
         return context
 
 
