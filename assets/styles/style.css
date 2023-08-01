@@ -594,8 +594,6 @@ input.aVolume {
     align-items: center;
 }
 
-
-
 @media (min-width: 768px) {
 
     .musics-container::-webkit-scrollbar,
@@ -618,6 +616,19 @@ input.aVolume {
         border-radius: 9999px;
         background-color: gray;
     }
+}
+
+#popup-modal {
+    display: block;
+    padding-right: 17px;
+  }
+
+.modal-content{
+    background-color: #b3b3b3;
+}
+
+.modal-body {
+    align-self: center;
 }
 
 @media (max-height: 820px) {

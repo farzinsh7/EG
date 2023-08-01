@@ -1,14 +1,20 @@
 from django import forms
-from .models import ContactForm
 
 
-class ContactFormClass(forms.ModelForm):
-    class Meta:
-        model = ContactForm
-        fields = ('name', 'email', 'subject', 'message')
-        widgets = {
-        'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Name', 'name':'name', 'type':'text'}),
-        'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder':'Email', 'name':'email'}),
-        'subject': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Subject', 'name':'Subject'}),
-        'message': forms.Textarea(attrs={'class': 'form-control', 'placeholder':'Enter your message here...', 'name':'Message', 'cols':'30', 'rows':'10'}),
-        }
+class ContactForm(forms.Form):
+    name = forms.CharField(
+        widget=forms.TextInput(attrs={'placeholder': 'Name', 'class': 'form-control'}),
+        label='Name',
+    )
+    email = forms.EmailField(
+        widget=forms.EmailInput(attrs={'placeholder': 'Email', 'class': 'form-control'}),
+        label='Email',
+    )
+    subject = forms.CharField(
+        widget=forms.TextInput(attrs={'placeholder': 'Subject', 'class': 'form-control'}),
+        label='Subject',
+    )
+    message = forms.CharField(
+        widget=forms.Textarea(attrs={'placeholder': 'Enter your message here...', 'class': 'form-control', 'name':'Message', 'cols':'30', 'rows':'10'}),
+        label='Message'
+    )

@@ -127,15 +127,15 @@ window.onload = () => {
         for (let i = 0; i < aWrap.length; i++) {
             let textrealpos = ((i + 1) / 2) - 1;
             setTimeout(() => {
-                if(playaudiotext[textrealpos]) {
+                if (playaudiotext[textrealpos]) {
                     playaudiotext[textrealpos].style.opacity = '1';
                     playaudiotext[textrealpos].style.visibility = 'visible';
                 }
-    
+
                 aWrap[i].style.width = '125px';
                 aWrap[i].classList.remove('no-hover');
             }, 500);
-    
+
             customaudiocontrols[i].style.opacity = '0';
             customaudiocontrols[i].style.visibility = 'hidden';
         }
@@ -154,15 +154,15 @@ window.onload = () => {
         for (let i = 0; i < aWrap.length; i++) {
             let textrealpos = ((i + 1) / 2) - 1;
             setTimeout(() => {
-                if(playaudiotext[textrealpos]) {
+                if (playaudiotext[textrealpos]) {
                     playaudiotext[textrealpos].style.opacity = '1';
                     playaudiotext[textrealpos].style.visibility = 'visible';
                 }
-    
+
                 aWrap[i].style.width = '125px';
                 aWrap[i].classList.remove('no-hover');
             }, 500);
-    
+
             customaudiocontrols[i].style.opacity = '0';
             customaudiocontrols[i].style.visibility = 'hidden';
         }
@@ -210,16 +210,16 @@ window.onload = () => {
     aWrap.forEach((element, index) => element.addEventListener('click', (e) => {
         e.stopPropagation();
 
-        if(width > 1199) {
+        if (width > 1199) {
             element.style.width = '550px';
             element.classList.add('no-hover');
 
             let textrealpos = ((index + 1) / 2) - 1;
-            if(playaudiotext[textrealpos]) {
+            if (playaudiotext[textrealpos]) {
                 playaudiotext[textrealpos].style.opacity = '0';
                 playaudiotext[textrealpos].style.visibility = 'hidden';
             }
-    
+
             customaudiocontrols[index].style.opacity = '1';
             customaudiocontrols[index].style.visibility = 'visible';
         }
@@ -251,7 +251,7 @@ window.onload = () => {
         if (rangeNewWidth > 95) {
             elTarget.nextSibling.style.width = rangeNewWidth + "%";
             elTarget.nextSibling.style.borderRadius = "10px";
-        } else if(0 < rangeNewWidth < 11) {
+        } else if (0 < rangeNewWidth < 11) {
             elTarget.nextSibling.style.width = rangeNewWidth + 1 + "%";
         } else {
             elTarget.nextSibling.style.width = rangeNewWidth + "%";
@@ -350,3 +350,28 @@ window.onload = () => {
 
     console.log('Coded by: https://FarzinShams.com');
 }
+
+function isDescendant(parent, child) {
+    let node = child.parentNode;
+    while (node != null) {
+      if (node === parent) {
+        return true;
+      }
+      node = node.parentNode;
+    }
+    return false;
+  }
+  
+  document.getElementById("dokme").addEventListener("click", function() {
+    document.getElementById("popup-modal").style.display = "none";
+  });
+  
+  document.addEventListener("click", function(event) {
+    const modal = document.getElementById("popup-modal");
+    const clickedElement = event.target;
+  
+    // Check if the clicked element is the modal or its descendant
+    if (!isDescendant(modal, clickedElement)) {
+      modal.style.display = "none";
+    }
+  });

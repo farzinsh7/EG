@@ -76,7 +76,7 @@ class VideoPlayer(models.Model):
 
 
 
-class ContactForm(models.Model):
+class ContactUs(models.Model):
     name = models.CharField(max_length=150)
     email = models.EmailField()
     subject = models.CharField(max_length=150)

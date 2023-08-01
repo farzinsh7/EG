@@ -316,20 +316,10 @@
                 <p class="text-white">I'll be glad to hear from you, buddy.</p>
             </div>
             <div class="contact-form-container">
-                <form method="post">
+                {% include 'messages.html' %}
+                <form method="post" name="contact-form">
                     {% csrf_token %}
-                    <div class="mb-4">
-                        {{ form.name }}
-                    </div>
-                    <div class="mb-4">
-                        {{ form.email }}
-                    </div>
-                    <div class="mb-4">
-                        {{ form.subject }}
-                    </div>
-                    <div class="mb-md-5 mb-4">
-                        {{ form.message }}
-                    </div>
+                    {{ form.as_p }}
                     <div>
                         <button type="submit" class="btn btn-primary rounded-3">Submit Now</button>
                     </div>

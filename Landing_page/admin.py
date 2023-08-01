@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import MainData, MusicPlayer, Gallery, SocialLinks, VideoPlayer, ContactForm
+from .models import MainData, MusicPlayer, Gallery, SocialLinks, VideoPlayer, ContactUs
 
 
 class SocialLinksAdmin(admin.TabularInline):
@@ -16,4 +16,4 @@ class MainDataAdmin(admin.ModelAdmin):
 admin.site.register(Gallery)
 admin.site.register(MusicPlayer)
 admin.site.register(VideoPlayer)
-admin.site.register(ContactForm)
+admin.site.register(ContactUs)
