@@ -28,6 +28,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_REDIRECT_URL = 'account:dashboard'
+
+LOGIN_URL = 'account:login'
 
 # Application definition
 
@@ -86,7 +89,7 @@ DATABASES = {
         'NAME': 'eg',
         'HOST': 'localhost',
         'USER': 'root',
-        'PASSWORD': 'F@rzin123',
+        'PASSWORD': 'Farzin1369007',
     }
 }
 
