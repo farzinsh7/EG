@@ -32,7 +32,6 @@ media
 .Python
 build/
 develop-eggs/
-static-cdn/
 dist/
 downloads/
 eggs/
