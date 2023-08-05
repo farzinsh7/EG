@@ -1,15 +1,10 @@
-# The views used below are normally mapped in the AdminSite instance.
-# This URLs file is used to provide a reliable view deployment for test purposes.
-# It is also provided as a convenience to those who want to deploy these URLs
-# elsewhere.
-
 from django.contrib.auth import views
 from django.urls import path
-from .views import account, CustomLoginView
+from .views import account
 
 app_name = "account"
 urlpatterns = [
-    path("login/", CustomLoginView.as_view(), name="login"),
+    path("login/", views.LoginView.as_view(), name="login"),
     # path("logout/", views.LogoutView.as_view(), name="logout"),
     # path("password_change/", views.PasswordChangeView.as_view(), name="password_change"),
     # path("password_change/done/", views.PasswordChangeDoneView.as_view(), name="password_change_done",),

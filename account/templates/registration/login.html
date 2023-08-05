@@ -1,3 +1,4 @@
+{% load widget_tweaks %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -45,11 +46,11 @@
                         <form method="post">
                             {% csrf_token %}
                             <div class="form-floating mb-3">
-                                {{ form.username }}
+                                {{ form.username|attr:"type:username"|attr:"id:floatingInput"|attr:"placeholder:name@example.com"|add_class:"form-control" }}
                                 <label for="floatingInput">Email address</label>
                             </div>
                             <div class="form-floating mb-4">
-                                {{ form.password }}
+                                {{ form.password|attr:"type:password"|attr:"id:floatingPassword"|attr:"placeholder:Password"|add_class:"form-control" }}
                                 <label for="floatingPassword">Password</label>
                             </div>
                             <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Sign In</button>
