@@ -1,0 +1,45 @@
+{% extends 'base/account/base.html' %}
+{% load thumbnail %}
+{% load widget_tweaks %}
+{% block content %}
+<div class="container-fluid pt-4 px-4">
+<div class="col-12">
+    <div class="bg-secondary rounded h-100 p-4">
+        <h6 class="mb-4">Responsive Table</h6>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Created</th>
+                        <th scope="col">Buttons</th>
+                    </tr>
+                </thead>
+                <tbody class="align-middle">
+                    {% for pic in object_list %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>
+                            {% thumbnail pic.data_file "170x120" crop="center" as im %}
+                                <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+                            {% endthumbnail %}
+                        </td>
+                        <td>{{ pic.title }}</td>
+                        <td>{{ pic.created|date:"M d, Y" }}</td>
+                        <td>
+                            <ul class="list">
+                            <li class="list-group mb-1"><a href="{% url 'account:gallery_delete' pic.pk %}"
+                                                           class="btn btn-danger">Delete</a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock content %}

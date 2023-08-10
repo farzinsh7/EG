@@ -25,11 +25,10 @@
         <div class="navbar-nav w-100">
             <a href="{% url 'account:dashboard' %}" class="nav-item nav-link {% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
             <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
-                <div class="dropdown-menu bg-transparent border-0">
-                    <a href="button.html" class="dropdown-item">Buttons</a>
-                    <a href="typography.html" class="dropdown-item">Typography</a>
-                    <a href="element.html" class="dropdown-item">Other Elements</a>
+                <a href="#" class="nav-link dropdown-toggle {% if request.resolver_match.url_name == 'gallery' %}active show{% elif request.resolver_match.url_name == 'gallery_create' %}active show{% endif %}" data-bs-toggle="dropdown" aria-expanded="{% if request.resolver_match.url_name == 'gallery' %}true{% elif request.resolver_match.url_name == 'gallery_create' %}true{% else %}false{% endif %}"><i class="fa fa-image me-2"></i>Gallery</a>
+                <div class="dropdown-menu bg-transparent border-0 {% if request.resolver_match.url_name == 'gallery' %}show{% elif request.resolver_match.url_name == 'gallery_create' %}show{% endif %}">
+                    <a href="{% url 'account:gallery' %}" class="dropdown-item {% if request.resolver_match.url_name == 'gallery' %}active{% endif %}">Gallery List</a>
+                    <a href="{% url 'account:gallery_create' %}" class="dropdown-item {% if request.resolver_match.url_name == 'gallery_create' %}active{% endif %}">Add Image</a>
                 </div>
             </div>
             <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>

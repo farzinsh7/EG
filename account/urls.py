@@ -1,6 +1,6 @@
 from django.contrib.auth import views
 from django.urls import path
-from .views import account, Information
+from .views import account, Information, GalleryList, GalleryDelete, GalleryCreate
 
 app_name = "account"
 urlpatterns = [
@@ -17,4 +17,7 @@ urlpatterns = [
 urlpatterns += [
     path("", account, name="dashboard"),
     path("info/<int:pk>", Information.as_view(), name="info"),
+    path("gallery/", GalleryList.as_view(), name="gallery"),
+    path("gallery/create/", GalleryCreate.as_view(), name="gallery_create"),
+    path("gallery/delete/<int:pk>", GalleryDelete.as_view(), name="gallery_delete"),
 ]
