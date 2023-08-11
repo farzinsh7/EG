@@ -2,9 +2,9 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
-from Landing_page.models import MainData, Gallery, MusicPlayer, VideoPlayer
+from Landing_page.models import MainData, Gallery, MusicPlayer, VideoPlayer, ContactUs
 from django.urls import reverse_lazy
-
+from .forms import ContactForms
 
 @login_required
 def account(request):
@@ -93,3 +93,26 @@ class VideoDelete(LoginRequiredMixin, DeleteView):
     template_name = 'registration/video_form_delete.html'
     success_url = reverse_lazy('account:videos')
     fields = ['title', 'album', 'image', 'data_file', 'publish', 'status']
+
+
+# Contact admin Panel -------------
+class MessageList(LoginRequiredMixin, ListView):
+    model = ContactUs
+    template_name = 'registration/message_list.html'
+    paginate_by = 2
+    queryset = ContactUs.objects.all().order_by("-created")
+    
+
+class MessageUpdate(LoginRequiredMixin, UpdateView):
+    template_name = 'registration/message_update.html'
+    model = ContactUs
+    # fields = ['name', 'email', 'subject', 'message', 'status']
+    form_class = ContactForms
+
+
+class MessageDelete(LoginRequiredMixin, DeleteView):
+    model = ContactUs
+    template_name = 'registration/message_delete.html'
+    success_url = reverse_lazy('account:message')
+    fields = ['name', 'email', 'subject', 'message', 'status']
+

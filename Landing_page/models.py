@@ -92,12 +92,20 @@ class VideoPlayer(models.Model):
 
 
 class ContactUs(models.Model):
+    STATUS_CHOICES = (
+        ('u', 'Unread'),
+        ('r', 'Read')
+    )
     name = models.CharField(max_length=150)
     email = models.EmailField()
     subject = models.CharField(max_length=150)
     message = models.TextField()
     created = models.DateTimeField(auto_now_add=True, null=True)
+    status = models.CharField(max_length=1, choices=STATUS_CHOICES, default='u')
 
 
     def __str__(self):
         return self.subject
+    
+    def get_absolute_url(self):
+        return reverse('account:message')

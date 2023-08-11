@@ -32,20 +32,20 @@
                 </div>
             </div>
             <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle {% if request.resolver_match.url_name == 'songs' %}active show{% elif request.resolver_match.url_name == 'song_create' %}active show{% endif %}" data-bs-toggle="dropdown" aria-expanded="{% if request.resolver_match.url_name == 'songs' %}true{% elif request.resolver_match.url_name == 'song_create' %}true{% else %}false{% endif %}"><i class="fa fa-music me-2"></i>Songs</a>
-                <div class="dropdown-menu bg-transparent border-0 {% if request.resolver_match.url_name == 'songs' %}show{% elif request.resolver_match.url_name == 'song_create' %}show{% endif %}">
+                <a href="#" class="nav-link dropdown-toggle {% if request.resolver_match.url_name == 'songs' %}active show{% elif request.resolver_match.url_name == 'song_create' %}active show{% elif request.resolver_match.url_name == 'song_update' %}active show{% endif %}" data-bs-toggle="dropdown" aria-expanded="{% if request.resolver_match.url_name == 'songs' %}true{% elif request.resolver_match.url_name == 'song_create' %}true{% elif request.resolver_match.url_name == 'song_update' %}true{% else %}false{% endif %}"><i class="fa fa-music me-2"></i>Songs</a>
+                <div class="dropdown-menu bg-transparent border-0 {% if request.resolver_match.url_name == 'songs' %}show{% elif request.resolver_match.url_name == 'song_create' %}show{% elif request.resolver_match.url_name == 'song_update' %}show{% endif %}">
                     <a href="{% url 'account:songs' %}" class="dropdown-item {% if request.resolver_match.url_name == 'songs' %}active{% endif %}">Songs List</a>
                     <a href="{% url 'account:song_create' %}" class="dropdown-item {% if request.resolver_match.url_name == 'song_create' %}active{% endif %}">Add Song</a>
                 </div>
             </div>
             <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle {% if request.resolver_match.url_name == 'videos' %}active show{% elif request.resolver_match.url_name == 'video_create' %}active show{% endif %}" data-bs-toggle="dropdown" aria-expanded="{% if request.resolver_match.url_name == 'videos' %}true{% elif request.resolver_match.url_name == 'video_create' %}true{% else %}false{% endif %}"><i class="fa fa-video me-2"></i>Videos</a>
-                <div class="dropdown-menu bg-transparent border-0 {% if request.resolver_match.url_name == 'videos' %}show{% elif request.resolver_match.url_name == 'video_create' %}show{% endif %}">
+                <a href="#" class="nav-link dropdown-toggle {% if request.resolver_match.url_name == 'videos' %}active show{% elif request.resolver_match.url_name == 'video_create' %}active show{% elif request.resolver_match.url_name == 'video_update' %}active show{% endif %}" data-bs-toggle="dropdown" aria-expanded="{% if request.resolver_match.url_name == 'videos' %}true{% elif request.resolver_match.url_name == 'video_create' %}true{% elif request.resolver_match.url_name == 'video_update' %}true{% else %}false{% endif %}"><i class="fa fa-video me-2"></i>Videos</a>
+                <div class="dropdown-menu bg-transparent border-0 {% if request.resolver_match.url_name == 'videos' %}show{% elif request.resolver_match.url_name == 'video_create' %}show{% elif request.resolver_match.url_name == 'video_update' %}show{% endif %}">
                     <a href="{% url 'account:videos' %}" class="dropdown-item {% if request.resolver_match.url_name == 'videos' %}active{% endif %}">Videos List</a>
                     <a href="{% url 'account:video_create' %}" class="dropdown-item {% if request.resolver_match.url_name == 'video_create' %}active{% endif %}">Add Video</a>
                 </div>
             </div>
-            <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
+            <a href="{% url 'account:message' %}" class="nav-item nav-link {% if request.resolver_match.url_name == 'message' %}active{% elif request.resolver_match.url_name == 'message_update' %}active{% endif %}"><i class="fa fa-envelope me-2"></i>Messages</a>
             <a href="{% url 'account:info' pk=1 %}" class="nav-item nav-link {% if request.resolver_match.url_name == 'info' %}active{% endif %}"><i class="fa fa-table me-2"></i>Information</a>
         </div>
     </nav>

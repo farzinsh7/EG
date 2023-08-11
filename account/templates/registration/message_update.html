@@ -1,0 +1,37 @@
+{% extends 'base/account/base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<div class="container-fluid pt-4 px-4">
+    <div class="row justify-content-center g-4">
+        <div class="col-sm-6">
+            <div class="bg-secondary rounded h-100 p-4">
+                <h6 class="mb-4">Video</h6>
+                <form role="form" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label  class="form-label">Subject</label>
+                        {{ form.subject|attr:"type:title"|add_class:"form-control" }}
+                    </div>
+                    <div class="mb-3">
+                        <label  class="form-label">Name</label>
+                        {{ form.name|attr:"type:title"|add_class:"form-control" }}
+                    </div>
+                    <div class="mb-3">
+                        <label  class="form-label">Email</label>
+                        {{ form.email|attr:"type:title"|add_class:"form-control" }}
+                    </div>
+                    <label  class="form-label">Message</label>
+                    <div class="mb-3 form-floating">
+                        {{ form.message|add_class:"form-control"|attr:"placeholder:Message"|attr:"style:height: 150px" }}
+                    </div>
+                    <div class="mb-3">
+                        <label  class="form-label">Status</label><br>
+                        {{ form.status|add_class:"form-select" }}
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
