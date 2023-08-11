@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
-from Landing_page.models import MainData, Gallery, MusicPlayer
+from Landing_page.models import MainData, Gallery, MusicPlayer, VideoPlayer
 from django.urls import reverse_lazy
 
 
@@ -16,6 +16,8 @@ class Information(LoginRequiredMixin, UpdateView):
     model = MainData
     fields = ['title', 'description', 'header_logo', 'footer_logo']
 
+
+# Gallery admin Panel -------------
 
 class GalleryList(LoginRequiredMixin, ListView):
     model = Gallery
@@ -36,6 +38,8 @@ class GalleryDelete(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('account:gallery')
     fields = ['title', 'data_file', 'created']
 
+
+# Songs admin Panel -------------
 
 class SongsList(LoginRequiredMixin, ListView):
     model = MusicPlayer
@@ -61,3 +65,31 @@ class SongDelete(LoginRequiredMixin, DeleteView):
     template_name = 'registration/song_form_delete.html'
     success_url = reverse_lazy('account:songs')
     fields = ['title', 'album', 'image', 'audio_file', 'publish', 'status']
+
+
+# Videos admin Panel -------------
+
+class VideosList(LoginRequiredMixin, ListView):
+    model = VideoPlayer
+    template_name = 'registration/videos_list.html'
+    paginate_by = 2
+    queryset = VideoPlayer.objects.all().order_by("-created")
+
+    
+class VideoCreate(LoginRequiredMixin, CreateView):
+    model = VideoPlayer
+    template_name = 'registration/video_create.html'
+    fields = ['title', 'album', 'image', 'data_file', 'publish', 'status']
+
+
+class VideoUpdate(LoginRequiredMixin, UpdateView):
+    template_name = 'registration/video_create.html'
+    model = VideoPlayer
+    fields = ['title', 'album', 'image', 'data_file', 'publish', 'status']
+
+
+class VideoDelete(LoginRequiredMixin, DeleteView):
+    model = VideoPlayer
+    template_name = 'registration/video_form_delete.html'
+    success_url = reverse_lazy('account:videos')
+    fields = ['title', 'album', 'image', 'data_file', 'publish', 'status']

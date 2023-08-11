@@ -20,27 +20,28 @@
                     </tr>
                 </thead>
                 <tbody class="align-middle">
-                    {% for song in object_list %}
+                    {% for video in object_list %}
                     <tr>
                         <th scope="row">{{ forloop.counter }}</th>
                         <td>
-                            {% thumbnail song.image "120x120" as im %}
-                                <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ song.title }}" class="rounded-3">
+                            {% thumbnail video.image "120x120" as im %}
+                                <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ video.title }}" class="rounded-3">
                             {% endthumbnail %}
                         </td>
-                        <td>{{ song.title }}</td>
-                        <td>{{ song.album }}</td>
-                        <td>{{ song.publish|date:"M d, Y" }}</td>
-                        {% if song.status == 'p' %}
-                            <td><span class="badge bg-success ">Published</span></td>
-                        {% else %}
-                            <td><span class="badge bg-warning ">Draft</span></td>
-                        {% endif %}
+                        <td>{{ video.title }}</td>
+                        <td>{{ video.album }}</td>
+                        <td>{{ video.publish|date:"M d, Y" }}</td>
+                            {% if video.status == 'p' %}
+                                <td><span class="badge bg-success ">Published</span></td>
+
+                            {% else %}
+                                <td><span class="badge bg-warning ">Draft</span></td>
+                            {% endif %}
                         <td>
                             <ul class="list">
-                            <li class="list-group mb-1"><a href="{% url 'account:song_delete' song.pk %}"
+                            <li class="list-group mb-1"><a href="{% url 'account:video_delete' video.pk %}"
                                                            class="btn btn-danger">Delete</a></li>
-                            <li class="list-group mb-1"><a href="{% url 'account:song_update' song.pk %}"
+                            <li class="list-group mb-1"><a href="{% url 'account:video_update' video.pk %}"
                                                            class="btn btn-warning">Update</a></li>
                             </ul>
                         </td>

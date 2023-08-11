@@ -86,6 +86,9 @@ class VideoPlayer(models.Model):
 
     objects = ProjectManager()
 
+    def get_absolute_url(self):
+        return reverse('account:videos')
+
 
 
 class ContactUs(models.Model):

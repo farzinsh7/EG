@@ -1,6 +1,6 @@
 from django.contrib.auth import views
 from django.urls import path
-from .views import account, Information, GalleryList, GalleryDelete, GalleryCreate, SongsList, SongCreate,SongDelete, SongUpdate
+from .views import account, Information, GalleryList, GalleryDelete, GalleryCreate, SongsList, SongCreate,SongDelete, SongUpdate, VideoCreate, VideoDelete, VideosList, VideoUpdate
 
 app_name = "account"
 urlpatterns = [
@@ -24,4 +24,8 @@ urlpatterns += [
     path("song/create/", SongCreate.as_view(), name="song_create"),
     path("song/update/<int:pk>", SongUpdate.as_view(), name="song_update"),
     path("song/delete/<int:pk>", SongDelete.as_view(), name="song_delete"),
+    path("video/", VideosList.as_view(), name="videos"),
+    path("video/create/", VideoCreate.as_view(), name="video_create"),
+    path("video/update/<int:pk>", VideoUpdate.as_view(), name="video_update"),
+    path("video/delete/<int:pk>", VideoDelete.as_view(), name="video_delete"),
 ]
