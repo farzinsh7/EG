@@ -50,6 +50,9 @@ class MusicPlayer(models.Model):
 
     objects = ProjectManager()
 
+    def get_absolute_url(self):
+        return reverse('account:songs')
+
 
 class Gallery(models.Model):
     title = models.CharField(max_length=150)

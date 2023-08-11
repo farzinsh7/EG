@@ -1,0 +1,41 @@
+{% extends 'base/account/base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-12">
+            <div class="bg-secondary rounded h-100 p-4">
+                <h6 class="mb-4">Song</h6>
+                <form role="form" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label  class="form-label">Title</label>
+                        {{ form.title|attr:"type:title"|add_class:"form-control" }}
+                    </div>
+                    <div class="mb-3">
+                        <label  class="form-label">Album</label>
+                        {{ form.album|attr:"type:title"|add_class:"form-control" }}
+                    </div>
+                    <div class="col-xl-5">
+                        <label for="formFileMultiple" class="form-label">Cover</label>
+                        {{ form.image|add_class:"form-control bg-dark"|attr:"type:file" }}
+                    </div>
+                    <div class="col-xl-5">
+                        <label for="formFileMultiple" class="form-label">File</label>
+                        {{ form.audio_file|add_class:"form-control bg-dark"|attr:"type:file" }}
+                    </div>
+                    <div class="mb-3 col-xl-5">
+                        <label  class="form-label">Publish</label><br>
+                        {{ form.publish }}
+                    </div>
+                    <div class="mb-3 col-xl-5">
+                        <label  class="form-label">Status</label><br>
+                        {{ form.status|add_class:"form-select" }}
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Create / Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

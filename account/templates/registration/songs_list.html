@@ -1,0 +1,71 @@
+{% extends 'base/account/base.html' %}
+{% load thumbnail %}
+{% load widget_tweaks %}
+{% block content %}
+<div class="container-fluid pt-4 px-4">
+<div class="col-12">
+    <div class="bg-secondary rounded h-100 p-4">
+        <h6 class="mb-4">Songs List</h6>
+        <div class="table-responsive ">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Cover</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Album</th>
+                        <th scope="col">Publish</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Buttons</th>
+                    </tr>
+                </thead>
+                <tbody class="align-middle">
+                    {% for song in object_list %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>
+                            {% thumbnail song.image "120x120" as im %}
+                                <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ song.title }}" class="rounded-3">
+                            {% endthumbnail %}
+                        </td>
+                        <td>{{ song.title }}</td>
+                        <td>{{ song.album }}</td>
+                        <td>{{ song.publish|date:"M d, Y" }}</td>
+                        <td>
+                            {% if song.status == 'p' %}
+                                <td><span class="badge bg-success ">Published</span></td>
+
+                            {% else %}
+                                <td><span class="badge bg-warning ">Draft</span></td>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <ul class="list">
+                            <li class="list-group mb-1"><a href="{% url 'account:song_delete' song.pk %}"
+                                                           class="btn btn-danger">Delete</a></li>
+                            <li class="list-group mb-1"><a href="{% url 'account:song_update' song.pk %}"
+                                                           class="btn btn-warning">Update</a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="btn-toolbar justify-content-center" role="toolbar">
+            <div class="btn-group me-2" role="group" aria-label="Second group">
+            {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}"><button type="button" class="btn btn-light">«</button></a>
+            {% endif %}
+            {% for page in paginator.page_range %}
+            <a
+            href="?page={{ page }}"><button type="button" class="btn {% if page == page_obj.number %}btn-primary{% else %}btn-secondary{% endif %}">{{ page }}</button></a>
+            {% endfor %}
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}"><button type="button" class="btn btn-light">»</button></a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+</div>
+{% endblock content %}

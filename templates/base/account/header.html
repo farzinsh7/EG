@@ -10,7 +10,7 @@
 <div class="sidebar pe-4 pb-3">
     <nav class="navbar bg-secondary navbar-dark">
         <a href="index.html" class="navbar-brand mx-4 mb-3">
-            <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>DarkPan</h3>
+            <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>Admin Panel</h3>
         </a>
         <div class="d-flex align-items-center ms-4 mb-4">
             <div class="position-relative">
@@ -18,7 +18,7 @@
                 <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
             </div>
             <div class="ms-3">
-                <h6 class="mb-0">Jhon Doe</h6>
+                <h6 class="mb-0">{% if user.get_full_name %}{{ user.get_full_name|title }}{% else %}{{ user.username|title }}{% endif %}</h6>
                 <span>Admin</span>
             </div>
         </div>
@@ -31,7 +31,13 @@
                     <a href="{% url 'account:gallery_create' %}" class="dropdown-item {% if request.resolver_match.url_name == 'gallery_create' %}active{% endif %}">Add Image</a>
                 </div>
             </div>
-            <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle {% if request.resolver_match.url_name == 'songs' %}active show{% elif request.resolver_match.url_name == 'song_create' %}active show{% endif %}" data-bs-toggle="dropdown" aria-expanded="{% if request.resolver_match.url_name == 'songs' %}true{% elif request.resolver_match.url_name == 'song_create' %}true{% else %}false{% endif %}"><i class="fa fa-image me-2"></i>Songs</a>
+                <div class="dropdown-menu bg-transparent border-0 {% if request.resolver_match.url_name == 'songs' %}show{% elif request.resolver_match.url_name == 'song_create' %}show{% endif %}">
+                    <a href="{% url 'account:songs' %}" class="dropdown-item {% if request.resolver_match.url_name == 'songs' %}active{% endif %}">Songs List</a>
+                    <a href="{% url 'account:song_create' %}" class="dropdown-item {% if request.resolver_match.url_name == 'song_create' %}active{% endif %}">Add Song</a>
+                </div>
+            </div>
             <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
             <a href="{% url 'account:info' pk=1 %}" class="nav-item nav-link {% if request.resolver_match.url_name == 'info' %}active{% endif %}"><i class="fa fa-table me-2"></i>Information</a>
         </div>
@@ -59,7 +65,7 @@
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                     <img class="rounded-circle me-lg-2" src="{% static 'account/img/user.jpg' %}" alt="" style="width: 40px; height: 40px;">
-                    <span class="d-none d-lg-inline-flex">John Doe</span>
+                    <span class="d-none d-lg-inline-flex">{% if user.get_full_name %}{{ user.get_full_name|title }}{% else %}{{ user.username|title }}{% endif %}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                     <a href="#" class="dropdown-item">My Profile</a>
