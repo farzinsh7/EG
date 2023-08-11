@@ -2,8 +2,8 @@
 {% load widget_tweaks %}
 {% block content %}
 <div class="container-fluid pt-4 px-4">
-    <div class="row g-4">
-        <div class="col-sm-12">
+    <div class="row justify-content-center g-4">
+        <div class="col-sm-6">
             <div class="bg-secondary rounded h-100 p-4">
                 <h6 class="mb-4">Song</h6>
                 <form role="form" method="post" enctype="multipart/form-data">
@@ -16,19 +16,19 @@
                         <label  class="form-label">Album</label>
                         {{ form.album|attr:"type:title"|add_class:"form-control" }}
                     </div>
-                    <div class="col-xl-5">
+                    <div>
                         <label for="formFileMultiple" class="form-label">Cover</label>
                         {{ form.image|add_class:"form-control bg-dark"|attr:"type:file" }}
                     </div>
-                    <div class="col-xl-5">
+                    <div>
                         <label for="formFileMultiple" class="form-label">File</label>
                         {{ form.audio_file|add_class:"form-control bg-dark"|attr:"type:file" }}
                     </div>
-                    <div class="mb-3 col-xl-5">
+                    <div class="mb-3">
                         <label  class="form-label">Publish</label><br>
-                        {{ form.publish }}
+                        {{ form.publish|add_class:"form-control" }}
                     </div>
-                    <div class="mb-3 col-xl-5">
+                    <div class="mb-3">
                         <label  class="form-label">Status</label><br>
                         {{ form.status|add_class:"form-select" }}
                     </div>
