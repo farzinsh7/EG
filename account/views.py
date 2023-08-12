@@ -6,9 +6,10 @@ from Landing_page.models import MainData, Gallery, MusicPlayer, VideoPlayer, Con
 from django.urls import reverse_lazy
 from .forms import ContactForms
 
-@login_required
-def account(request):
-    return render(request, 'registration/account.html')
+
+class Account(LoginRequiredMixin, ListView):
+    model = Gallery
+    template_name = 'registration/account.html'
 
 
 class Information(LoginRequiredMixin, UpdateView):
@@ -22,7 +23,7 @@ class Information(LoginRequiredMixin, UpdateView):
 class GalleryList(LoginRequiredMixin, ListView):
     model = Gallery
     template_name = 'registration/gallery_list.html'
-    paginate_by = 2
+    paginate_by = 10
     queryset = Gallery.objects.all().order_by("-created")
 
     
@@ -44,7 +45,7 @@ class GalleryDelete(LoginRequiredMixin, DeleteView):
 class SongsList(LoginRequiredMixin, ListView):
     model = MusicPlayer
     template_name = 'registration/songs_list.html'
-    paginate_by = 2
+    paginate_by = 10
     queryset = MusicPlayer.objects.all().order_by("-created")
 
     
@@ -72,7 +73,7 @@ class SongDelete(LoginRequiredMixin, DeleteView):
 class VideosList(LoginRequiredMixin, ListView):
     model = VideoPlayer
     template_name = 'registration/videos_list.html'
-    paginate_by = 2
+    paginate_by = 10
     queryset = VideoPlayer.objects.all().order_by("-created")
 
     
@@ -99,14 +100,13 @@ class VideoDelete(LoginRequiredMixin, DeleteView):
 class MessageList(LoginRequiredMixin, ListView):
     model = ContactUs
     template_name = 'registration/message_list.html'
-    paginate_by = 2
+    paginate_by = 10
     queryset = ContactUs.objects.all().order_by("-created")
     
 
 class MessageUpdate(LoginRequiredMixin, UpdateView):
     template_name = 'registration/message_update.html'
     model = ContactUs
-    # fields = ['name', 'email', 'subject', 'message', 'status']
     form_class = ContactForms
 
 
