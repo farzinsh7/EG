@@ -24,7 +24,7 @@ class MainData(models.Model):
 
 class SocialLinks(models.Model):
     label = models.CharField(max_length=120)
-    icon = models.CharField(max_length=200)
+    icon = models.CharField(null=True, max_length=200)
     link = models.CharField(max_length=200,blank=True,null=True)
     main_data = models.ForeignKey(MainData, null=True, on_delete=models.SET_NULL, related_name='socials')
 
@@ -40,7 +40,7 @@ class MusicPlayer(models.Model):
     title= models.CharField(max_length=150)
     album= models.CharField(max_length=150)
     image= models.ImageField(upload_to='cover', null=True)
-    audio_file = models.FileField(blank=True,null=True)
+    audio_file = models.FileField(upload_to="song", blank=True,null=True)
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True, null=True)
     status = models.CharField(max_length=1, choices=STATUS_CHOICES)
@@ -76,7 +76,7 @@ class VideoPlayer(models.Model):
     title= models.CharField(max_length=150)
     album= models.CharField(max_length=150)
     image= models.ImageField(upload_to='video-cover', null=True)
-    data_file = models.FileField(blank=True,null=True)
+    data_file = models.FileField(upload_to="video", blank=True,null=True)
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True, null=True)
     status = models.CharField(max_length=1, choices=STATUS_CHOICES)
