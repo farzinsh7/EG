@@ -8,8 +8,17 @@ from .forms import ContactForms
 
 
 class Account(LoginRequiredMixin, ListView):
-    model = Gallery
+    model = MusicPlayer
     template_name = 'registration/account.html'
+    queryset = MusicPlayer.objects.all().count
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['music'] = MusicPlayer.objects.all().count
+        context['video'] = VideoPlayer.objects.all().count
+        context['message'] = ContactUs.objects.all().count
+        # context['music'] = MusicPlayer.objects.all().count
+        return context
 
 
 class Information(LoginRequiredMixin, UpdateView):
