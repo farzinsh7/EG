@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from .models import IPAddress
 from Landing_page.models import MainData, Gallery, MusicPlayer, VideoPlayer, ContactUs
 from django.urls import reverse_lazy
 from .forms import ContactForms
@@ -12,12 +13,19 @@ class Account(LoginRequiredMixin, ListView):
     template_name = 'registration/account.html'
     queryset = MusicPlayer.objects.all().count
 
+    def get_object(self):
+        account_hits = AccountHits.objects.all()
+        ip_address = self.request.user.ip_address
+        if ip_address not in account_hits.hints.all():
+            account_hits.hits.add(ip_address)
+        return account_hits
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['music'] = MusicPlayer.objects.all().count
         context['video'] = VideoPlayer.objects.all().count
         context['message'] = ContactUs.objects.all().count
-        # context['music'] = MusicPlayer.objects.all().count
+        context['account'] = IPAddress.objects.all().count
         return context
 
 

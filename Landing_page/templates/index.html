@@ -165,7 +165,7 @@
                                                 <i class="fas fa-download fa-xl"></i>
                                             </a>
                                         </div>
-                                        <div class="share-music-container">
+                                        {% comment %} <div class="share-music-container">
                                             <a href="javascript:void(0)" class="open-share-nav "
                                                 aria-label="Share Music">
                                                 <i class="fa-solid fa-share-nodes fa-xl"></i>
@@ -200,7 +200,7 @@
                                                     </span>
                                                 </div>
                                             </span>
-                                        </div>
+                                        </div> {% endcomment %}
                                         <div class="music-phone-options-container">
                                             <a href="javascript:void(0)" class="open-share-nav" aria-label="Open Music Options">
                                                 <i class="fa-solid fa-ellipsis fa-xl"></i>
@@ -208,7 +208,7 @@
                                             <span
                                             class="share-this-music-container position-absolute bg-black top-0 py-2 px-2 rounded-2 z-1">
                                                 <div class="social-links-container d-flex gap-1 flex-column-reverse align-items-center">
-                                                    <span class="social-link-container">
+                                                    {% comment %} <span class="social-link-container">
                                                         <a href="" class="social-link" target="_blank"
                                                             aria-label="Spotify">
                                                             <i class="fab fa-spotify"></i>
@@ -219,19 +219,19 @@
                                                             aria-label="Instagram">
                                                             <i class="fab fa-instagram"></i>
                                                         </a>
-                                                    </span>
+                                                    </span> {% endcomment %}
                                                     <span class="social-link-container">
-                                                        <a href="" aria-label="Download Music" target="_blank">
+                                                        <a href="{{ song.audio_file.url }}" aria-label="Download Music" target="_blank">
                                                             <i class="fa fa-download"></i>
                                                         </a>
                                                     </span>
-                                                    <span class="social-link-container">
+                                                    {% comment %} <span class="social-link-container">
                                                         <a href="javascript:void(0)"
                                                             class="social-link close-share-nav"
                                                             aria-label="Close Share Nav">
                                                             <i class="fa fa-times"></i>
                                                         </a>
-                                                    </span>
+                                                    </span> {% endcomment %}
                                                 </div>
                                             </span>
                                         </div>
