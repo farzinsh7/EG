@@ -594,6 +594,20 @@ input.aVolume {
     align-items: center;
 }
 
+.fa{
+    font-size: 25px!important;
+}
+
+.social-color a{
+    color: #9f9f9f!important;
+    font-size: 18px!important;
+}
+
+.aPlay i{
+    color: #ffffff!important;
+    font-size: 18px!important;
+}
+
 @media (min-width: 768px) {
 
     .musics-container::-webkit-scrollbar,
@@ -746,6 +760,16 @@ input.aVolume {
     }
     .open-share-nav{
         color: #000 !important;
+    }
+
+    .aPlay i{
+        color: #141414!important;
+        font-size: 18px!important;
+    }
+
+    .volume-container i{
+        color: #141414!important;
+        font-size: 18px!important;
     }
 }
 

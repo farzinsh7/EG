@@ -1,5 +1,6 @@
 {% extends 'base/main_base.html' %}
 {% load thumbnail %}
+{% load social_share %}
 {% load static %}
 {% load custom_filters %}
 {% block content %}
@@ -162,35 +163,20 @@
                                     <div class="download-share-container d-flex gap-4">
                                         <div class="download-music-container down">
                                             <a href="{{ song.audio_file.url }}" aria-label="Download Music" target="_blank">
-                                                <i class="fas fa-download fa-xl"></i>
+                                                <i class="fa fa-download fa-xl"></i>
                                             </a>
                                         </div>
-                                        {% comment %} <div class="share-music-container">
+                                        <div class="share-music-container">
                                             <a href="javascript:void(0)" class="open-share-nav "
                                                 aria-label="Share Music">
-                                                <i class="fa-solid fa-share-nodes fa-xl"></i>
+                                                <i class="fa fa-share-alt fa-xl"></i>
                                             </a>
                                             <span
                                                 class="share-this-music-container position-absolute bg-black top-0 py-2 px-2 rounded-2 z-1">
-                                                <div class="social-links-container d-flex gap-1 flex-column-reverse align-items-center">
-                                                    <span class="social-link-container">
-                                                        <a href="" class="social-link" target="_blank"
-                                                            aria-label="Soundcloud">
-                                                            <i class="fab fa-soundcloud"></i>
-                                                        </a>
-                                                    </span>
-                                                    <span class="social-link-container">
-                                                        <a href="" class="social-link" target="_blank"
-                                                            aria-label="Spotify">
-                                                            <i class="fab fa-spotify"></i>
-                                                        </a>
-                                                    </span>
-                                                    <span class="social-link-container">
-                                                        <a href="" class="social-link" target="_blank"
-                                                            aria-label="Instagram">
-                                                            <i class="fab fa-instagram"></i>
-                                                        </a>
-                                                    </span>
+                                                <div class="social-links-container social-color d-flex gap-1 flex-column-reverse align-items-center">
+                                                    {% post_to_twitter "Song: {{song.title}} By Ehsan Ghorbanzadeh" object_or_url " " "fa fa-twitter" %}
+                                                    {% post_to_telegram "Song: {{song.title}} By Ehsan Ghorbanzadeh" object_or_url " " "fa fa-telegram" %}
+                                                    {% post_to_whatsapp object_or_url " " "fa fa-whatsapp" %}
                                                     <span class="social-link-container">
                                                         <a href="javascript:void(0)"
                                                             class="social-link close-share-nav"
@@ -200,38 +186,30 @@
                                                     </span>
                                                 </div>
                                             </span>
-                                        </div> {% endcomment %}
+                                        </div>
                                         <div class="music-phone-options-container">
                                             <a href="javascript:void(0)" class="open-share-nav" aria-label="Open Music Options">
-                                                <i class="fa-solid fa-ellipsis fa-xl"></i>
+                                                <i class="fa fa-ellipsis-h fa-xl"></i>
                                             </a>
+
                                             <span
                                             class="share-this-music-container position-absolute bg-black top-0 py-2 px-2 rounded-2 z-1">
                                                 <div class="social-links-container d-flex gap-1 flex-column-reverse align-items-center">
-                                                    {% comment %} <span class="social-link-container">
-                                                        <a href="" class="social-link" target="_blank"
-                                                            aria-label="Spotify">
-                                                            <i class="fab fa-spotify"></i>
-                                                        </a>
-                                                    </span>
+                                                    {% post_to_twitter "Song: {{song.title}} By Ehsan Ghorbanzadeh" object_or_url " " "fa fa-twitter" %}
+                                                    {% post_to_telegram "Song: {{song.title}} By Ehsan Ghorbanzadeh" object_or_url " " "fa fa-telegram" %}
                                                     <span class="social-link-container">
-                                                        <a href="" class="social-link" target="_blank"
-                                                            aria-label="Instagram">
-                                                            <i class="fab fa-instagram"></i>
-                                                        </a>
-                                                    </span> {% endcomment %}
-                                                    <span class="social-link-container">
-                                                        <a href="{{ song.audio_file.url }}" aria-label="Download Music" target="_blank">
+                                                        <a href="" aria-label="Download Music" target="_blank">
                                                             <i class="fa fa-download"></i>
                                                         </a>
                                                     </span>
-                                                    {% comment %} <span class="social-link-container">
+
+                                                    <span class="social-link-container">
                                                         <a href="javascript:void(0)"
                                                             class="social-link close-share-nav"
                                                             aria-label="Close Share Nav">
                                                             <i class="fa fa-times"></i>
                                                         </a>
-                                                    </span> {% endcomment %}
+                                                    </span>
                                                 </div>
                                             </span>
                                         </div>
