@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
-from .models import IPAddress
+from .models import IPAddress, User
 from Landing_page.models import MainData, Gallery, MusicPlayer, VideoPlayer, ContactUs
 from django.urls import reverse_lazy
-from .forms import ContactForms
+from .forms import ContactForms, ProfileForms
 
 
 class Account(LoginRequiredMixin, ListView):
@@ -27,6 +28,28 @@ class Account(LoginRequiredMixin, ListView):
         context['message'] = ContactUs.objects.all().count
         context['account'] = IPAddress.objects.all().count
         return context
+
+
+
+class ProfileView(LoginRequiredMixin, UpdateView):
+    model = User
+    template_name = 'registration/profile.html'
+    success_url = reverse_lazy('account:profile')
+    form_class = ProfileForms
+
+    def get_object(self):
+        return User.objects.get(pk=self.request.user.pk)
+
+    def get_form_kwargs(self):
+        kwargs = super(ProfileView, self).get_form_kwargs()
+        kwargs.update({
+            'user': self.request.user
+        })
+        return kwargs
+
+
+class PasswordChange(PasswordChangeView):
+    success_url = reverse_lazy("account:password_change_done")
 
 
 class Information(LoginRequiredMixin, UpdateView):

@@ -1,0 +1,38 @@
+{% extends 'base/account/base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<div class="container-fluid mt-5 pt-4 px-4">
+    <div class="row justify-content-center g-4">
+        <div class="col-sm-6">
+            <div class="bg-secondary rounded h-100 p-4">
+                <h6 class="mb-4">Profile</h6>
+                <form role="form" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row col-12">
+                        <div class="mb-3 col-6">
+                            <label  class="form-label text-white">User Name</label>
+                            {{ form.username|attr:"type:title"|add_class:"form-control" }}
+                        </div>
+                        <div class="mb-3 col-6">
+                            <label class="form-label text-white">First Name</label>
+                            {{ form.first_name|attr:"type:title"|add_class:"form-control" }}
+                        </div>
+                    </div>
+                    <div class="row col-12">
+                        <div class="mb-3 col-6">
+                            <label  class="form-label text-white">Last Name</label>
+                            {{ form.last_name|attr:"type:title"|add_class:"form-control" }}
+                        </div>
+                        <div class="mb-3 col-6">
+                            <label  class="form-label text-white">Email</label>
+                            {{ form.email|attr:"type:title"|add_class:"form-control" }}
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Update</button>
+                    <a href="{% url 'account:password_change' %}" class="btn btn-outline-info mt-3">Change Password</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

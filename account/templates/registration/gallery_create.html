@@ -9,12 +9,12 @@
                 <form role="form" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="mb-3 col-xl-6">
-                        <label  class="form-label">Title</label>
+                        <label  class="form-label text-white">Title</label>
                         {{ form.title|attr:"type:title"|add_class:"form-control" }}
                     </div>
                     <div class="mb-3 gap-5 col-12 d-inline-flex">
                     <div class="col-xl-6">
-                        <label for="formFileMultiple" class="form-label">Image file</label>
+                        <label for="formFileMultiple" class="form-label text-white">Image file</label>
                         {{ form.data_file|add_class:"form-control bg-dark"|attr:"type:file" }}
                     </div>
                     </div>

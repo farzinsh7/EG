@@ -1,13 +1,13 @@
 from django.contrib.auth import views
 from django.urls import path
-from .views import Account, Information, GalleryList, GalleryDelete, GalleryCreate, SongsList, SongCreate,SongDelete, SongUpdate, VideoCreate, VideoDelete, VideosList, VideoUpdate, MessageList, MessageUpdate, MessageDelete
+from .views import Account, Information, GalleryList, GalleryDelete, GalleryCreate, SongsList, SongCreate,SongDelete, SongUpdate, VideoCreate, VideoDelete, VideosList, VideoUpdate, MessageList, MessageUpdate, MessageDelete, ProfileView, PasswordChange
 
 app_name = "account"
 urlpatterns = [
     path("login/", views.LoginView.as_view(), name="login"),
-    # path("logout/", views.LogoutView.as_view(), name="logout"),
-    # path("password_change/", views.PasswordChangeView.as_view(), name="password_change"),
-    # path("password_change/done/", views.PasswordChangeDoneView.as_view(), name="password_change_done",),
+    path("logout/", views.LogoutView.as_view(), name="logout"),
+    path("password_change/", PasswordChange.as_view(), name="password_change"),
+    path("password_change/done/", views.PasswordChangeDoneView.as_view(), name="password_change_done",),
     # path("password_reset/", views.PasswordResetView.as_view(), name="password_reset"),
     # path("password_reset/done/", views.PasswordResetDoneView.as_view(), name="password_reset_done",),
     # path("reset/<uidb64>/<token>/", views.PasswordResetConfirmView.as_view(), name="password_reset_confirm",),
@@ -16,6 +16,7 @@ urlpatterns = [
 
 urlpatterns += [
     path("", Account.as_view(), name="dashboard"),
+    path('profile/', ProfileView.as_view(), name='profile'),
     path("info/<int:pk>", Information.as_view(), name="info"),
     path("gallery/", GalleryList.as_view(), name="gallery"),
     path("gallery/create/", GalleryCreate.as_view(), name="gallery_create"),

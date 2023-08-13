@@ -9,27 +9,27 @@
                 <form role="form" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="mb-3">
-                        <label  class="form-label">Title</label>
+                        <label  class="form-label text-white">Title</label>
                         {{ form.title|attr:"type:title"|add_class:"form-control" }}
                     </div>
                     <div class="mb-3">
-                        <label  class="form-label">Album</label>
+                        <label  class="form-label text-white">Album</label>
                         {{ form.album|attr:"type:title"|add_class:"form-control" }}
                     </div>
                     <div>
-                        <label for="formFileMultiple" class="form-label">Cover</label>
+                        <label for="formFileMultiple" class="form-label text-white">Cover</label>
                         {{ form.image|add_class:"form-control bg-dark"|attr:"type:file" }}
                     </div>
                     <div>
-                        <label for="formFileMultiple" class="form-label">File</label>
+                        <label for="formFileMultiple" class="form-label text-white">File</label>
                         {{ form.data_file|add_class:"form-control bg-dark"|attr:"type:file" }}
                     </div>
                     <div class="mb-3">
-                        <label  class="form-label">Publish</label><br>
+                        <label  class="form-label text-white">Publish</label><br>
                         {{ form.publish|add_class:"form-control" }}
                     </div>
                     <div class="mb-3">
-                        <label  class="form-label">Status</label><br>
+                        <label  class="form-label text-white">Status</label><br>
                         {{ form.status|add_class:"form-select" }}
                     </div>
                     <button type="submit" class="btn btn-primary mt-3">Create / Update</button>

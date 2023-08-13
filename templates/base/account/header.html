@@ -47,6 +47,7 @@
             </div>
             <a href="{% url 'account:message' %}" class="nav-item nav-link {% if request.resolver_match.url_name == 'message' %}active{% elif request.resolver_match.url_name == 'message_update' %}active{% endif %}"><i class="fa fa-envelope me-2"></i>Messages</a>
             <a href="{% url 'account:info' pk=1 %}" class="nav-item nav-link {% if request.resolver_match.url_name == 'info' %}active{% endif %}"><i class="fa fa-table me-2"></i>Information</a>
+            <a href="{% url 'account:profile' %}" class="nav-item nav-link {% if request.resolver_match.url_name == 'profile' %}active{% endif %}"><i class="fa fa-user me-2"></i>Profile</a>
         </div>
     </nav>
 </div>
@@ -75,8 +76,8 @@
                     <span class="d-none d-lg-inline-flex">{% if user.get_full_name %}{{ user.get_full_name|title }}{% else %}{{ user.username|title }}{% endif %}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                    <a href="#" class="dropdown-item">My Profile</a>
-                    <a href="{% url 'logout' %}" class="dropdown-item">Log Out</a>
+                    <a href="{% url 'account:profile' %}" class="dropdown-item">My Profile</a>
+                    <a href="{% url 'account:logout' %}" class="dropdown-item">Log Out</a>
                 </div>
             </div>
         </div>
