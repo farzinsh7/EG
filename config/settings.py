@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'account.apps.AccountConfig',
     'django_render_partial',
     'django_social_share',
+    'crispy_forms',
+    'crispy_bootstrap4',
     'widget_tweaks',
     'sorl.thumbnail',
     'Landing_page',
@@ -150,3 +152,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static-cdn', 'media-root')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'account.User'
+
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
