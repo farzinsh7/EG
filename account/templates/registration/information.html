@@ -5,25 +5,25 @@
     <div class="row g-4">
         <div class="col-sm-12">
             <div class="bg-secondary rounded h-100 p-4">
-                <h6 class="mb-4">Information</h6>
+                <h6 class="btn btn-dark rounded-pill mb-4">Information</h6>
                 <form role="form" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="mb-3">
-                        <label  class="form-label">Website Title</label>
+                        <label  class="form-label text-white">Website Title</label>
                         {{ form.title|attr:"type:title"|add_class:"form-control" }}
                     </div>
-                    <label  class="form-label">Website Description</label>
+                    <label  class="form-label text-white">Website Description</label>
                     <div class="form-floating mb-3">
                         {{ form.description|add_class:"form-control"|attr:"placeholder:Description"|attr:"style:height: 150px" }}
                     </div>
                     <div class="mb-3 gap-5 col-12 d-inline-flex">
                     <div class="col-xl-5">
-                        <label for="formFileMultiple" class="form-label">Header Logo</label>
+                        <label for="formFileMultiple" class="form-label text-white">Header Logo</label>
                         {{ form.header_logo|add_class:"form-control bg-dark"|attr:"type:file" }}
                     </div>
 
                     <div class="col-xl-5">
-                        <label for="formFileMultiple" class="form-label">Footer Logo</label>
+                        <label for="formFileMultiple" class="form-label text-white">Footer Logo</label>
                         {{ form.footer_logo|add_class:"form-control bg-dark"|attr:"type:file" }}
                     </div>
                     </div>
