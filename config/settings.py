@@ -32,6 +32,8 @@ LOGIN_REDIRECT_URL = 'account:dashboard'
 
 LOGIN_URL = 'account:login'
 
+LOGOUT_REDIRECT_URL = 'homepage:information'
+
 # Application definition
 
 INSTALLED_APPS = [

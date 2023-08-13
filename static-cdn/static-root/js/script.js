@@ -352,26 +352,20 @@ window.onload = () => {
 }
 
 function isDescendant(parent, child) {
-    let node = child.parentNode;
-    while (node != null) {
-      if (node === parent) {
-        return true;
-      }
-      node = node.parentNode;
-    }
-    return false;
-  }
-  
-  document.getElementById("dokme").addEventListener("click", function() {
-    document.getElementById("popup-modal").style.display = "none";
-  });
-  
-  document.addEventListener("click", function(event) {
-    const modal = document.getElementById("popup-modal");
+    return parent.contains(child);
+}
+
+const modal = document.getElementById("popup-modal");
+
+document.getElementById("dokme").addEventListener("click", function () {
+    modal.style.display = "none";
+});
+
+document.addEventListener("click", function (event) {
     const clickedElement = event.target;
-  
+
     // Check if the clicked element is the modal or its descendant
     if (!isDescendant(modal, clickedElement)) {
-      modal.style.display = "none";
+        modal.style.display = "none";
     }
-  });
+});
