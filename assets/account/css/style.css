@@ -11,7 +11,7 @@
     display: none;
     right: 45px;
     bottom: 45px;
-    z-index: 99;
+    z-index: 6000;
 }
 
 
@@ -286,4 +286,9 @@
 .testimonial-carousel .owl-dot.active {
     background: var(--dark);
     border-color: var(--primary);
+}
+
+.footer {
+    right: 0;
+    z-index: 5000;
 }
