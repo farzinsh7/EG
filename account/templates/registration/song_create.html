@@ -16,11 +16,11 @@
                         <label  class="form-label text-white">Album</label>
                         {{ form.album|attr:"type:title"|add_class:"form-control" }}
                     </div>
-                    <div>
+                    <div class="mb-3">
                         <label for="formFileMultiple" class="form-label text-white">Cover</label>
                         {{ form.image|add_class:"form-control bg-dark"|attr:"type:file" }}
                     </div>
-                    <div>
+                    <div class="mb-3">
                         <label for="formFileMultiple" class="form-label text-white">File</label>
                         {{ form.audio_file|add_class:"form-control bg-dark"|attr:"type:file" }}
                     </div>

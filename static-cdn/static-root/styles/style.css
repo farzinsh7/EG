@@ -114,6 +114,12 @@ strong {
     background-size: cover;
 }
 
+.fullsize-background-footer {
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .header-menu-items-container {
     text-transform: capitalize;
 }

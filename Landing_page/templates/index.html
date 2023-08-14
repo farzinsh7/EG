@@ -197,7 +197,7 @@
                                                     {% post_to_twitter "Song: {{song.title}} By Ehsan Ghorbanzadeh" object_or_url " " "fa fa-twitter" %}
                                                     {% post_to_telegram "Song: {{song.title}} By Ehsan Ghorbanzadeh" object_or_url " " "fa fa-telegram" %}
                                                     <span class="social-link-container">
-                                                        <a href="" aria-label="Download Music" target="_blank">
+                                                        <a href="{{ song.audio_file.url }}" aria-label="Download Music" target="_blank">
                                                             <i class="fa fa-download"></i>
                                                         </a>
                                                     </span>
@@ -255,37 +255,38 @@
         </div>
         <span id="photogallery" class="bottom-fake-space position-absolute bottom-0 left-0 right-0 w-100"></span>
     </section>
-    <section class="photogallery fullsize-background position-relative">
-        <div class="container py-md-5 py-4 position-relative z-1">
-            <div class="section-container position-relative">
-                <div class="section-header">
-                    <img src="{% static "images/main/photoGallery.png" %}" alt="">
+{% if gallery %}
+<section class="photogallery fullsize-background position-relative">
+    <div class="container py-md-5 py-4 position-relative z-1">
+        <div class="section-container position-relative">
+            <div class="section-header">
+                <img src="{% static "images/main/photoGallery.png" %}" alt="">
+            </div>
+            <div class="photogallery-container d-flex gap-4 flex-md-row flex-column">
+                <div class="gallery-container w-75 image-zoom-in-container">
+                    <img src="{{ gallery.all|get_first_url }}" alt="" class="w-100 rounded-2">
                 </div>
-                <div class="photogallery-container d-flex gap-4 flex-md-row flex-column">
-                    <div class="gallery-container w-75 image-zoom-in-container">
-                        <img src="{{ gallery.all|get_first_url }}" alt="" class="w-100 rounded-2">
-                    </div>
 
-                    <div class="list-container w-25 overflow-auto">
-                        <ol class="gallery-list overflow-auto">
-                            {% for item in gallery %}
-                                <li class="gallery-list-item w-100 d-inline-block">
-                                    <a href="javascript:void(0)" class="d-block mb-2">
-                                        <img src="{{ item.data_file.url }}" alt="{{ item.title }}"
-                                            class="w-100 rounded-2 image-zoom-out">
-                                    </a>
-                                </li>
-                            {% endfor %}
-                        </ol>
-                    </div>
+                <div class="list-container w-25 overflow-auto">
+                    <ol class="gallery-list overflow-auto">
+                        {% for item in gallery %}
+                            <li class="gallery-list-item w-100 d-inline-block">
+                                <a href="javascript:void(0)" class="d-block mb-2">
+                                    <img src="{{ item.data_file.url }}" alt="{{ item.title }}" class="w-100 rounded-2 image-zoom-out">
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ol>
                 </div>
             </div>
         </div>
+    </div>
 
-        <span id="contact" class="bottom-fake-space position-absolute bottom-0 left-0 right-0 w-100"></span>
-    </section>
+    <span id="contact" class="bottom-fake-space position-absolute bottom-0 left-0 right-0 w-100"></span>
+</section>
+{% endif %}
 </main>
-<footer class="contact fullsize-background">
+<footer class="contact fullsize-background-footer">
     <div class="container d-flex flex-column justify-content-end h-100 pb-5">
         <div class="contact-container pt-5">
             <div class="contact-header mb-4">
