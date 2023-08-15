@@ -287,8 +287,3 @@
     background: var(--dark);
     border-color: var(--primary);
 }
-
-.footer {
-    right: 0;
-    z-index: 5000;
-}

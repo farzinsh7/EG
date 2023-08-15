@@ -97,20 +97,20 @@ class SongsList(LoginRequiredMixin, ListView):
 class SongCreate(LoginRequiredMixin, CreateView):
     model = MusicPlayer
     template_name = 'registration/song_create.html'
-    fields = ['title', 'album', 'image', 'audio_file', 'publish', 'status']
+    fields = ['title', 'album', 'songwriter', 'cover_art', 'arrngement', 'image', 'audio_file', 'publish', 'status']
 
 
 class SongUpdate(LoginRequiredMixin, UpdateView):
     template_name = 'registration/song_create.html'
     model = MusicPlayer
-    fields = ['title', 'album', 'image', 'audio_file', 'publish', 'status']
+    fields = ['title', 'album', 'songwriter', 'cover_art', 'arrngement', 'image', 'audio_file', 'publish', 'status']
 
 
 class SongDelete(LoginRequiredMixin, DeleteView):
     model = MusicPlayer
     template_name = 'registration/song_form_delete.html'
     success_url = reverse_lazy('account:songs')
-    fields = ['title', 'album', 'image', 'audio_file', 'publish', 'status']
+    fields = ['title', 'album', 'songwriter', 'cover_art', 'arrngement', 'image', 'audio_file', 'publish', 'status']
 
 
 # Videos admin Panel -------------
@@ -125,20 +125,20 @@ class VideosList(LoginRequiredMixin, ListView):
 class VideoCreate(LoginRequiredMixin, CreateView):
     model = VideoPlayer
     template_name = 'registration/video_create.html'
-    fields = ['title', 'album', 'image', 'data_file', 'publish', 'status']
+    fields = ['title', 'album', 'director', 'cover_art', 'image', 'data_file', 'publish', 'status']
 
 
 class VideoUpdate(LoginRequiredMixin, UpdateView):
     template_name = 'registration/video_create.html'
     model = VideoPlayer
-    fields = ['title', 'album', 'image', 'data_file', 'publish', 'status']
+    fields = ['title', 'album', 'director', 'cover_art', 'image', 'data_file', 'publish', 'status']
 
 
 class VideoDelete(LoginRequiredMixin, DeleteView):
     model = VideoPlayer
     template_name = 'registration/video_form_delete.html'
     success_url = reverse_lazy('account:videos')
-    fields = ['title', 'album', 'image', 'data_file', 'publish', 'status']
+    fields = ['title', 'album', 'director', 'cover_art', 'image', 'data_file', 'publish', 'status']
 
 
 # Contact admin Panel -------------

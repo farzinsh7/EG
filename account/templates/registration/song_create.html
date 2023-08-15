@@ -17,6 +17,18 @@
                         {{ form.album|attr:"type:title"|add_class:"form-control" }}
                     </div>
                     <div class="mb-3">
+                        <label  class="form-label text-white">SongWriter</label>
+                        {{ form.songwriter|attr:"type:title"|add_class:"form-control" }}
+                    </div>
+                    <div class="mb-3">
+                        <label  class="form-label text-white">Cover Art</label>
+                        {{ form.cover_art|attr:"type:title"|add_class:"form-control" }}
+                    </div>
+                    <div class="mb-3">
+                        <label  class="form-label text-white">Arrngement</label>
+                        {{ form.arrngement|attr:"type:title"|add_class:"form-control" }}
+                    </div>
+                    <div class="mb-3">
                         <label for="formFileMultiple" class="form-label text-white">Cover</label>
                         {{ form.image|add_class:"form-control bg-dark"|attr:"type:file" }}
                     </div>
