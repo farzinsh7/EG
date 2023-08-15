@@ -9,6 +9,10 @@ class User(AbstractUser):
 
 class IPAddress(models.Model):
     ip_address = models.GenericIPAddressField()
+    
 
 class AccountHits(models.Model):
+    date = models.DateField(null=True,unique=True)
+    view_count = models.PositiveIntegerField(default=0)
     hits = models.ManyToManyField(IPAddress, blank=True, related_name="hits")
+    # unique_ips = models.ManyToManyField('UniqueIP', blank=True)

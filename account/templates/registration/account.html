@@ -42,4 +42,41 @@
             </div>
         </div>
     </div>
+    <div class="container-fluid pt-4 px-4">
+        <div class="row justify-content-center g-4">
+            <div class="col-sm-12 col-xl-6">
+                <div class="bg-secondary text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">View Per Day</h6>
+                    </div>
+                    <canvas id="salse-revenue" width="742" height="371" style="display: block; box-sizing: border-box; height: 371px; width: 742px;"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    window.onload = function() {
+        var canvas = document.getElementById("salse-revenue");
+        if (canvas) {
+            var ctx2 = canvas.getContext("2d");
+            var myChart2 = new Chart(ctx2, {
+                type: "line",
+                data: {
+                    labels: [{% for view_entry in view_data %}"{{ view_entry.date|date:'l' }}",{% endfor %}],
+                    datasets: [{
+                        label: "View Per Day",
+                        data: [{% for view_entry in view_data %}{{ view_entry.view_count }},{% endfor %}],
+                        backgroundColor: "rgba(235, 22, 22, .7)",
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true
+                }
+            });
+        } else {
+            console.log("Canvas element not found");
+        }
+    };
+</script>
 {% endblock content %}

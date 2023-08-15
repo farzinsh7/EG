@@ -3,16 +3,18 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
-from .models import IPAddress, User
+from .models import IPAddress, User, AccountHits
 from Landing_page.models import MainData, Gallery, MusicPlayer, VideoPlayer, ContactUs
 from django.urls import reverse_lazy
 from .forms import ContactForms, ProfileForms
+from datetime import date
+from datetime import datetime, timedelta
 
 
 class Account(LoginRequiredMixin, ListView):
-    model = MusicPlayer
+    model = AccountHits
     template_name = 'registration/account.html'
-    queryset = MusicPlayer.objects.all().count
+    # queryset = MusicPlayer.objects.all().count    
 
     def get_object(self):
         account_hits = AccountHits.objects.all()
@@ -27,6 +29,9 @@ class Account(LoginRequiredMixin, ListView):
         context['video'] = VideoPlayer.objects.all().count
         context['message'] = ContactUs.objects.all().count
         context['account'] = IPAddress.objects.all().count
+        today = datetime.now().date()
+        seven_days_ago = today - timedelta(days=7)
+        context['view_data'] = AccountHits.objects.filter(date__range=[seven_days_ago, today])
         return context
 
 
