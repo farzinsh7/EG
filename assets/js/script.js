@@ -10,7 +10,7 @@ window.onload = () => {
     let videolistcontainer = document.querySelector('.musicvideos-container .list-container');
     let gallerylistcontainer = document.querySelector('.photogallery-container .list-container');
     let videocontainerheight = videocontainer.getBoundingClientRect().height;
-    let gallerycontainerheight = gallerycontainer.getBoundingClientRect().height;
+    // let gallerycontainerheight = gallerycontainer.getBoundingClientRect().height;
     let backtotop = document.querySelectorAll('.backtotop');
     let gotomusic = document.querySelector('.go-to-music');
     let gotonextsection = document.querySelector('.go-to-next-section');
@@ -36,7 +36,7 @@ window.onload = () => {
     let width = window.innerWidth;
 
     videolistcontainer.style.height = videocontainerheight + 'px';
-    gallerylistcontainer.style.height = gallerycontainerheight + 'px';
+    // gallerylistcontainer.style.height = gallerycontainerheight + 'px';
 
     function currentYPosition() {
         // Firefox, Chrome, Opera, Safari
@@ -100,9 +100,9 @@ window.onload = () => {
         smoothScroll('musicvideo');
     })
 
-    gotophotogallery.addEventListener('click', () => {
-        smoothScroll('photogallery');
-    })
+    // gotophotogallery.addEventListener('click', () => {
+    //     smoothScroll('photogallery');
+    // })
 
     gotocontact.addEventListener('click', () => {
         smoothScroll('contact');
