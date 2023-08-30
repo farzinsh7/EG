@@ -57,7 +57,7 @@
     <div class="w-50 intro-left-container"></div>
     <div class="w-50 intro-right-container d-flex align-items-center px-3">
         <div class="welcome-container w-75">
-            <img src="{% static "images/main/Ehsan Ghorbanzadeh.svg" %}" alt="">
+            <img src="{% static "images/main/EhsanGhorbanzadeh.svg" %}" alt="">
             <p>{{ info.description }}</p>
             <div class="social-links-container d-flex gap-4">
                 {% for social in info.socials.all %}
@@ -100,9 +100,11 @@
                                         <div class="music-information-container">
                                             <h6>{{ song.title }}</h6>
                                             <small>{{ song.album }}</small>
-                                            <audio controls>
-                                                <source src="{{ song.audio_file.url }}" type="audio/mpeg">
-                                              </audio>
+                                            <div class="phone-player-container">
+                                                <audio controls>
+                                                    <source src="{{ song.audio_file.url }}" type="audio/mpeg">
+                                                </audio>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -110,7 +112,7 @@
                                     <div class="play-music-container position-relative">
                                         <audio controls>
                                             <source src="{{ song.audio_file.url }}" type="audio/mpeg">
-                                          </audio>
+                                        </audio>
                                     </div>
                                     <div class="download-share-container d-flex gap-4">
                                         <div class="share-music-container">
@@ -142,8 +144,7 @@
                                             class="share-this-music-container position-absolute bg-black top-0 py-2 px-2 rounded-2 z-1">
                                                 <div class="social-links-container d-flex gap-1 flex-column-reverse align-items-center">
                                                     {% post_to_twitter "Song: {{song.title}} By Ehsan Ghorbanzadeh" object_or_url " " "fa fa-twitter" %}
-                                                    {% post_to_telegram "Song: {{song.title}} By Ehsan Ghorbanzadeh" object_or_url " " "fa fa-telegram" %}
-                                                    <span class="social-link-container">
+                                                    {% post_to_telegram "Song: {{song.title}} By Ehsan Ghorbanzadeh" object_or_url " " "fa fa-telegram"%}                                  <span class="social-link-container">
                                                         <a href="javascript:void(0)"
                                                             class="social-link close-share-nav"
                                                             aria-label="Close Share Nav">

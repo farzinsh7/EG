@@ -1,15 +1,3 @@
-@charset "UTF-8";
-
-@font-face {
-    font-family: SFCompact;
-    src: url(../fonts/SFCompactDisplay-Regular.woff);
-    font-display: auto;
-}
-
-* {
-    font-family: SFCompact;
-}
-
 body,
 html {
     overflow-x: hidden;
@@ -468,7 +456,7 @@ textarea.form-control {
 .aCron {
     font-size: 14px;
     color: #cbcbcb;
-    margin: 0 10px;
+    /*margin: 0 10px;*/
 }
 
 .aNow {
@@ -635,6 +623,9 @@ input.aVolume {
         background-clip: padding-box;
         border-radius: 9999px;
         background-color: gray;
+    }
+    .video-height{
+        height: 600px !important;
     }
 }
 
@@ -935,6 +926,9 @@ input.aVolume {
 
     .phone-player-container .aWrap input[type="range"] {
         width: 100px;
+    }
+    .video-height{
+        height: 230px !important;
     }
 }
 
