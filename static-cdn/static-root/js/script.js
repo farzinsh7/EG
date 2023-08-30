@@ -1,10 +1,4 @@
-// import FullyReveal from './FullyReveal.js';
-
 window.onload = () => {
-    // AOS.init();
-    // var fullyReveal = new FullyReveal;
-    // fullyReveal.init();
-
     let videocontainer = document.querySelector('.video-container video');
     let gallerycontainer = document.querySelector('.gallery-container img');
     let videolistcontainer = document.querySelector('.musicvideos-container .list-container');
@@ -350,22 +344,3 @@ window.onload = () => {
 
     console.log('Coded by: https://FarzinShams.com');
 }
-
-function isDescendant(parent, child) {
-    return parent.contains(child);
-}
-
-const modal = document.getElementById("popup-modal");
-
-document.getElementById("dokme").addEventListener("click", function () {
-    modal.style.display = "none";
-});
-
-document.addEventListener("click", function (event) {
-    const clickedElement = event.target;
-
-    // Check if the clicked element is the modal or its descendant
-    if (!isDescendant(modal, clickedElement)) {
-        modal.style.display = "none";
-    }
-});

@@ -30,13 +30,15 @@
                                 Music Video
                             </a>
                         </li>
+                        {% if gallery %}
                         <li class="header-menu-item d-inline-block px-4">
                             <a href="javascript:void(0)" class="go-to-photogallery phone-click-handler">
                                 Photo Gallery
                             </a>
                         </li>
+                        {% endif %}
                         <li class="header-menu-item d-inline-block px-4">
-                            <a href="javascript:void(0)" class="go-to-contact phone-click-handler">
+                            <a href="#contact" class="go-to-contact phone-click-handler">
                                 Contact
                             </a>
                         </li>
@@ -98,74 +100,19 @@
                                         <div class="music-information-container">
                                             <h6>{{ song.title }}</h6>
                                             <small>{{ song.album }}</small>
-                                            <div class="phone-player-container">
-                                                <a href="javascript:void(0)" class="aWrap show-audio text-white"
-                                                    data-src="{{ song.audio_file.url }}">
-                                                    <button class="aPlay" disabled><span class="aPlayIco"><i
-                                                                class="fa fa-play"></i></span></button>
-                                                    <div class="custom-audio-controls">
-                                                        <div class="me-2">
-                                                            <span class="aNow"></span>
-                                                        </div>
-                                                        <div class="range">
-                                                            <span class="under-ranger"></span>
-                                                            <input class="aSeek" type="range" min="0" value="0"
-                                                                step="1" disabled><span class="change-range"></span>
-                                                        </div>
-                                                        <div class="aCron">
-                                                            <span class="aTime"></span>
-                                                        </div>
-                                                        <div class="volume-container">
-                                                            <span class="aVolIco"><i
-                                                                    class="fa fa-volume-up"></i></span>
-                                                            <div class="range-volume">
-                                                                <span class="under-ranger"></span>
-                                                                <input class="aVolume" type="range" min="0" max="1"
-                                                                    value="1" step="0.1" disabled><span
-                                                                    class="change-range"></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
+                                            <audio controls>
+                                                <source src="{{ song.audio_file.url }}" type="audio/mpeg">
+                                              </audio>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="music-options-container d-flex gap-4 align-items-center me-3">
                                     <div class="play-music-container position-relative">
-                                        <div class="aWrap show-audio text-white"
-                                            data-src="{{ song.audio_file.url }}"><button class="aPlay" disabled><span
-                                                    class="aPlayIco"><i class="fa fa-play"></i></span></button>
-                                            <span class="play-audio-text">
-                                                Play Track
-                                            </span>
-                                            <div class="custom-audio-controls">
-                                                <div class="range">
-                                                    <span class="under-ranger"></span>
-                                                    <input class="aSeek" type="range" min="0" value="0" step="1"
-                                                        disabled><span class="change-range"></span>
-                                                </div>
-                                                <div class="aCron">
-                                                    <span class="aNow"></span> / <span class="aTime"></span>
-                                                </div>
-                                                <div class="volume-container">
-                                                    <span class="aVolIco"><i class="fa fa-volume-up"></i></span>
-                                                    <div class="range-volume">
-                                                        <span class="under-ranger"></span>
-                                                        <input class="aVolume" type="range" min="0" max="1"
-                                                            value="1" step="0.1" disabled><span
-                                                            class="change-range"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <audio controls>
+                                            <source src="{{ song.audio_file.url }}" type="audio/mpeg">
+                                          </audio>
                                     </div>
                                     <div class="download-share-container d-flex gap-4">
-                                        <div class="download-music-container down">
-                                            <a href="{{ song.audio_file.url }}" aria-label="Download Music" target="_blank">
-                                                <i class="fa fa-download fa-xl"></i>
-                                            </a>
-                                        </div>
                                         <div class="share-music-container">
                                             <a href="javascript:void(0)" class="open-share-nav "
                                                 aria-label="Share Music">
@@ -197,12 +144,6 @@
                                                     {% post_to_twitter "Song: {{song.title}} By Ehsan Ghorbanzadeh" object_or_url " " "fa fa-twitter" %}
                                                     {% post_to_telegram "Song: {{song.title}} By Ehsan Ghorbanzadeh" object_or_url " " "fa fa-telegram" %}
                                                     <span class="social-link-container">
-                                                        <a href="{{ song.audio_file.url }}" aria-label="Download Music" target="_blank">
-                                                            <i class="fa fa-download"></i>
-                                                        </a>
-                                                    </span>
-
-                                                    <span class="social-link-container">
                                                         <a href="javascript:void(0)"
                                                             class="social-link close-share-nav"
                                                             aria-label="Close Share Nav">
@@ -227,13 +168,13 @@
         <div class="container py-md-5 py-4 position-relative z-1">
             <div class="section-container position-relative">
                 <div class="section-header">
-                    <img src="{% static "images/main/musicvideo.png" %}" alt="">
+                    <img src="{% static "images/main/musicVideo.png" %}" alt="">
                 </div>
-                <div class="musicvideos-container d-flex gap-4 flex-md-row flex-column">
+                <div class="musicvideos-container d-flex flex-md-row flex-column">
                     <div class="video-container w-75 video-zoom-in-container">
-                        <video  src="{{ video.all|get_first_url }}" controls
+                        <video src="{{ video.all|get_first_url }}"  controls
                         controlsList="nodownload noremoteplayback noplaybackrate"
-                        class="w-100 rounded-2"></video>
+                        class="w-100 video-height rounded-2"></video>
                     </div>
                     <div class="list-container w-25 overflow-auto">
                         <ol class="gallery-list overflow-auto">
@@ -286,7 +227,7 @@
 </section>
 {% endif %}
 </main>
-<footer class="contact fullsize-background-footer">
+<footer id="contact" class="contact fullsize-background-footer">
     <div class="container d-flex flex-column justify-content-end h-100 pb-5">
         <div class="contact-container pt-5">
             <div class="contact-header mb-4">

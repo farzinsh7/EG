@@ -14,4 +14,24 @@
   </div>
 </div>
  {% endfor %}
+ <script>
+   function isDescendant(parent, child) {
+    return parent.contains(child);
+}
+
+const modal = document.getElementById("popup-modal");
+
+document.getElementById("dokme").addEventListener("click", function () {
+    modal.style.display = "none";
+});
+
+document.addEventListener("click", function (event) {
+    const clickedElement = event.target;
+
+    // Check if the clicked element is the modal or its descendant
+    if (!isDescendant(modal, clickedElement)) {
+        modal.style.display = "none";
+    }
+});
+ </script>
 {% endif %}
