@@ -101,7 +101,7 @@
                                             <h6>{{ song.title }}</h6>
                                             <small>{{ song.album }}</small>
                                             <div class="phone-player-container">
-                                                <audio controls>
+                                                <audio controls preload="none">
                                                     <source src="{{ song.audio_file.url }}" type="audio/mpeg">
                                                 </audio>
                                             </div>
@@ -110,9 +110,9 @@
                                 </div>
                                 <div class="music-options-container d-flex gap-4 align-items-center me-3">
                                     <div class="play-music-container position-relative">
-                                        <audio controls>
+                                        <audio controls preload="none">
                                             <source src="{{ song.audio_file.url }}" type="audio/mpeg">
-                                        </audio>
+                                          </audio>
                                     </div>
                                     <div class="download-share-container d-flex gap-4">
                                         <div class="share-music-container">

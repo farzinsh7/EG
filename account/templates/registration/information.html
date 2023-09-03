@@ -6,7 +6,7 @@
         <div class="col-sm-12">
             <div class="bg-secondary rounded h-100 p-4">
                 <h6 class="btn btn-dark rounded-pill mb-4">Information</h6>
-                <form role="form" method="post" enctype="multipart/form-data">
+                <form role="form" method="post" action="{% url 'account:info' object.pk %}" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="mb-3">
                         <label  class="form-label text-white">Website Title</label>
@@ -27,10 +27,59 @@
                         {{ form.footer_logo|add_class:"form-control bg-dark"|attr:"type:file" }}
                     </div>
                     </div>
+                    <div class="col-12">
+                        <label class="form-label text-white">Social Medias</label>  
+                        <div class="t-inline">
+                        {{ social_links_formset.as_p }}
+                        </div>
+                    </div>
                     <button type="submit" class="btn btn-primary mt-3">Update</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
+<script>
+    // Get all the div elements with class "t-inline"
+    const tInlineDivs = document.querySelectorAll('.t-inline');
+
+    // Loop through each "t-inline" div
+    tInlineDivs.forEach((div) => {
+        // Get all the <p> elements inside the current "t-inline" div
+        const pElements = div.querySelectorAll('p');
+
+        // Add the "col-6" class to every <p> element
+        pElements.forEach((p) => {
+            p.classList.add('col-6');
+            
+            // Get all the <input> elements inside the <p> element
+            const inputElements = p.querySelectorAll('input');
+            
+            // Add the "form-control" class to each <input> element
+            inputElements.forEach((input) => {
+                input.classList.add('form-control');
+            });
+        });
+
+        // Create a new <div> element with the class "row"
+        const rowDiv = document.createElement('div');
+        rowDiv.classList.add('row');
+
+        // Move every two <p> elements inside a new "row" div
+        let col6Div;
+        pElements.forEach((p, index) => {
+            if (index % 2 === 0) {
+                col6Div = document.createElement('div');
+                col6Div.classList.add('row');
+                rowDiv.appendChild(col6Div);
+            }
+            col6Div.appendChild(p);
+        });
+
+        // Append the "row" div containing the grouped "col-6" divs to the parent "t-inline" div
+        div.appendChild(rowDiv);
+    });
+</script>
+
+
 {% endblock content %}

@@ -287,3 +287,11 @@
     background: var(--dark);
     border-color: var(--primary);
 }
+
+.form-control {
+    color: #c1c4d9 !important;
+}
+
+.form-label {
+    font-weight: 700 !important;
+}
