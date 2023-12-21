@@ -13,5 +13,11 @@
 <body id="backtotop">
 {% block content%}{% endblock content %}
 {% include 'base/_footer_refrences.html'%}
+<script>
+    $(document).ready(function() {
+      // Initialize Fancybox for images with the 'fancybox' class
+      $(".fancybox").fancybox();
+    });
+</script>
 </body>
 </html>
