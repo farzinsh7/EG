@@ -89,7 +89,7 @@
                             <div class="music-container rounded-3 py-3 px-4 d-flex justify-content-between mb-1 position-relative">
                                 <div class="music-inner-container d-flex gap-4">
                                     <div>
-                                        <a href="{% thumbnail song.image "800x800" as im %}{{ im.url }}{% endthumbnail %}" class="fancybox" data-fancybox="single-image">
+                                        <a href="{% thumbnail song.image "1500x1500" as im %}{{ im.url }}{% endthumbnail %}" class="fancybox" data-fancybox >
                                             {% thumbnail song.image "80x80" as im %}
                                                 <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ song.title }}" class="rounded-3">
                                             {% endthumbnail %}
@@ -125,8 +125,8 @@
                                             <span
                                                 class="share-this-music-container position-absolute bg-black top-0 py-2 px-2 rounded-2 z-1">
                                                 <div class="social-links-container social-color d-flex gap-1 flex-column-reverse align-items-center">
-                                                    {% post_to_twitter "Song: {{song.title}} By Ehsan Ghorbanzadeh" object_or_url " " "fa fa-twitter" %}
-                                                    {% post_to_telegram "Song: {{song.title}} By Ehsan Ghorbanzadeh" object_or_url " " "fa fa-telegram" %}
+                                                    {% post_to_twitter "Song: {{song.title}} By Ehsan Ghorbanzadeh" song.audio_file.url " " "fa fa-twitter" %}
+                                                    {% post_to_telegram "Song: {{song.title}} By Ehsan Ghorbanzadeh" song.audio_file.url " " "fa fa-telegram" %}
                                                     <span class="social-link-container">
                                                         <a href="javascript:void(0)"
                                                             class="social-link close-share-nav"
@@ -141,12 +141,11 @@
                                             <a href="javascript:void(0)" class="open-share-nav" aria-label="Open Music Options">
                                                 <i class="fa fa-ellipsis-h fa-xl"></i>
                                             </a>
-
                                             <span
                                             class="share-this-music-container position-absolute bg-black top-0 py-2 px-2 rounded-2 z-1">
                                                 <div class="social-links-container d-flex gap-1 flex-column-reverse align-items-center">
-                                                    {% post_to_twitter "Song: {{song.title}} By Ehsan Ghorbanzadeh" object_or_url " " "fa fa-twitter" %}
-                                                    {% post_to_telegram "Song: {{song.title}} By Ehsan Ghorbanzadeh" object_or_url " " "fa fa-telegram"%}                                  <span class="social-link-container">
+                                                    {% post_to_twitter "Song: {{song.title}} By Ehsan Ghorbanzadeh" song.audio_file.url " " "fa fa-twitter" %}
+                                                    {% post_to_telegram "Song: {{song.title}} By Ehsan Ghorbanzadeh" song.audio_file.url " " "fa fa-telegram"%}                                  <span class="social-link-container">
                                                         <a href="javascript:void(0)"
                                                             class="social-link close-share-nav"
                                                             aria-label="Close Share Nav">
@@ -175,8 +174,8 @@
                 </div>
                 <div class="musicvideos-container d-flex flex-md-row flex-column">
                     <div class="video-container w-75 video-zoom-in-container">
-                        <video src="{{ video.all|get_first_url }}"  controls
-                        controlsList="nodownload noremoteplayback noplaybackrate"
+                        <video src="{{ video.all|get_first_url }}" poster="" controls
+                        controlsList="noremoteplayback noplaybackrate"
                         class="w-100 video-height rounded-2"></video>
                     </div>
                     <div class="list-container w-25 overflow-auto">
@@ -184,8 +183,8 @@
                             {% for clip in video %}
                             <li class="gallery-list-item w-100 d-inline-block">
                                 <a href="javascript:void(0)" class="d-block mb-2">
-                                    {% thumbnail clip.image "318x189" as im %}
-                                        <video width="{{ im.width }}" height="{{ im.height }}" poster="{{ im.url }}" src="{{ clip.data_file.url }}"
+                                    {% thumbnail clip.image "1000x1000" as im %}
+                                        <video width="318" height="189" preload="none" poster="{{ im.url }}" src="{{ clip.data_file.url }}"
                                         class="w-100 rounded-2 video-zoom-out">
                                         </video>
                                     {% endthumbnail %}
@@ -257,9 +256,11 @@
                     </a>
                 </div>
                 <div class="footer-copyright-container d-flex justify-content-center">
-                    <p class="mb-0">
+                    <p class="mb-0 text-center">
                         <small>
-                            &copy;2023 Allrights reserved for Ehsan Ghorbanzadeh
+                            ©<script>document.write(/\d{4}/.exec(Date())[0])</script> Allrights reserved for Ehsan Ghorbanzadeh
+                        <br>
+                        Designed By <a style="color: #7f7f7f;" href="https://farzinshams.com" target="_blank" rel="nofollow">Farzin</a>
                         </small>
                     </p>
                 </div>
